@@ -2,7 +2,6 @@ import React, {useMemo} from 'react';
 import {
   StyleSheet,
   Text,
-  View,
   FlatList,
   ImageBackground,
   TouchableOpacity,
@@ -13,6 +12,8 @@ import {GET_BOSS} from '../GraphQL/queries';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import type {HomeStackParams} from '../screens/Home';
 
+import {Spinner} from './Spinner';
+
 type Props = NativeStackScreenProps<HomeStackParams, 'Bosses'>;
 
 export default function Bosses({navigation}: Props): JSX.Element {
@@ -22,7 +23,7 @@ export default function Bosses({navigation}: Props): JSX.Element {
   }, [data]);
 
   if (loading) {
-    return <Text>'Loading...'</Text>;
+    return <Spinner />;
   }
   if (error) {
     return <Text>`Error! ${error.message}`</Text>;
@@ -32,7 +33,14 @@ export default function Bosses({navigation}: Props): JSX.Element {
       style={styles.container}
       data={boss}
       renderItem={({item}) => (
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('InfoPage', {
+              name: item.name,
+              id: item.id,
+              type: 'boss',
+            });
+          }}>
           {item.image ? (
             <ImageBackground
               blurRadius={2}

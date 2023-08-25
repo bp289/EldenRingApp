@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useQuery} from '@apollo/client';
-import {GET_ENTITY} from '../GraphQL/queries';
+import {GET_WEAPONS} from '../GraphQL/Weapons';
 
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import type {HomeStackParams} from '../screens/Home';
@@ -16,7 +16,7 @@ import {Spinner} from './Spinner';
 type Props = NativeStackScreenProps<HomeStackParams, 'Weapons'>;
 
 export default function Weapons({navigation}: Props): JSX.Element {
-  const {loading, error, data} = useQuery(GET_ENTITY('weapon'));
+  const {loading, error, data} = useQuery(GET_WEAPONS);
   const {weapon} = useMemo(() => {
     return data ? data : [];
   }, [data]);
@@ -34,10 +34,10 @@ export default function Weapons({navigation}: Props): JSX.Element {
       renderItem={({item}) => (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('InfoPage', {
+            navigation.navigate('WeaponInfo', {
               name: item.name,
               id: item.id,
-              type: 'boss',
+              image: item.image,
             });
           }}>
           <ImageBackground
@@ -64,9 +64,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   textStyle: {
-    fontFamily: 'Mantinia Regular',
+    fontFamily: 'Cormorant Garamond',
     fontSize: 20,
-    color: '#F9DF99',
+    color: '#CCBD79',
     marginTop: 40,
     marginLeft: 10,
   },

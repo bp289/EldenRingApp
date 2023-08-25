@@ -2,6 +2,10 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "assets/fonts/CormorantGaramond-Regular.ttf",
+      "sha1": "e6f212e20e9b26cfd5efb7b36880c3ad4362094b"
+    },
+    {
       "path": "assets/fonts/Mantinia Regular.ttf",
       "sha1": "87f378ffe6de165bcda43a04c22fc824e269ccae"
     }

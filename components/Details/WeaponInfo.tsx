@@ -3,19 +3,19 @@ import {ScrollView, Text} from 'react-native';
 
 import {useQuery} from '@apollo/client';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import type {HomeStackParams} from '../screens/Home';
-import {GET_INFO} from '../GraphQL/queries';
+import type {HomeStackParams} from '../../screens/Home';
+import {GET_BOSS_DETAILS} from '../../GraphQL/Bosses';
 
-type Props = NativeStackScreenProps<HomeStackParams, 'InfoPage'>;
+type Props = NativeStackScreenProps<HomeStackParams, 'WeaponInfo'>;
 
-export default function Info({navigation, route}: Props): JSX.Element {
-  const {id, type} = route.params;
+export default function BossInfo({navigation, route}: Props): JSX.Element {
+  const {id} = route.params;
 
-  const {loading, error, data} = useQuery(GET_INFO(type, id));
+  const {loading, error, data} = useQuery(GET_BOSS_DETAILS(id));
 
   const entityInfo = useMemo(() => {
-    return data ? data[type] : [];
-  }, [data, type]);
+    return data ? data : [];
+  }, [data]);
 
   if (loading) {
     return <Text>'Loading...'</Text>;

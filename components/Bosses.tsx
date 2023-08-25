@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useQuery} from '@apollo/client';
-import {GET_BOSS} from '../GraphQL/queries';
+import {GET_BOSS} from '../GraphQL/Bosses';
 
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import type {HomeStackParams} from '../screens/Home';
@@ -35,10 +35,10 @@ export default function Bosses({navigation}: Props): JSX.Element {
       renderItem={({item}) => (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('InfoPage', {
+            navigation.navigate('BossInfo', {
               name: item.name,
               id: item.id,
-              type: 'boss',
+              image: item.image,
             });
           }}>
           {item.image ? (
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   textStyle: {
-    fontFamily: 'Mantinia Regular',
+    fontFamily: 'Cormorant Garamond',
     fontSize: 20,
     color: '#F9DF99',
     marginTop: 40,

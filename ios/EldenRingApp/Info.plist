@@ -54,6 +54,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Mantinia Regular.ttf</string>
+		<string>CormorantGaramond-Regular.ttf</string>
 	</array>
 </dict>
 </plist>

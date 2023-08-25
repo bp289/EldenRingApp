@@ -12,7 +12,7 @@ export const GET_ARMORS = gql`
 
 export const GET_ARMOR_DETAILS = id => gql`
   query {
-    getArmor(id: ${id}) {
+    getArmor(id: "${id}") {
       description
       weight
       dmgNegation {

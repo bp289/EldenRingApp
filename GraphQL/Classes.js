@@ -12,7 +12,7 @@ export const GET_CLASSES = gql`
 
 export const GET_CLASS_DETAILS = id => gql`
   query {
-    getClass(id: ${id}) {
+    getClass(id: "${id}") {
       id
       name
       image

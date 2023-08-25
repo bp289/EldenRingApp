@@ -12,7 +12,7 @@ export const GET_ASHES_OF_WAR = gql`
 
 export const GET_AOW_DETAILS = id => gql`
   query {
-    getAshOfWar(id: ${id}) {
+    getAshOfWar(id: "${id}") {
       description
       affinity
       skill

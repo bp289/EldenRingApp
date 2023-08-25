@@ -12,7 +12,7 @@ export const GET_BOSS = gql`
 
 export const GET_BOSS_DETAILS = id => gql`
   query {
-    boss(id: ${id}) {
+    boss(id: "${id}") {
       description,
       location,
       region,

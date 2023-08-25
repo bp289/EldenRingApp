@@ -1,8 +1,8 @@
 import {gql} from '@apollo/client';
 
-export const GET_INCANTATIONS = gql`
+export const GET_SORCERIES = gql`
   query {
-    incantation(limit: 100) {
+    sorcery(limit: 100) {
       id
       name
       image
@@ -10,11 +10,13 @@ export const GET_INCANTATIONS = gql`
   }
 `;
 
-export const GET_INCANTATION_DETAILS = id => gql`
+export const GET_SORCERY_DETAILS = id => gql`
   query {
-    getIncantation("${id}") {
+    getSorcery(id: "${id}") {
+      id
+      name
+      image
       description
-      type
       cost
       slots
       effects

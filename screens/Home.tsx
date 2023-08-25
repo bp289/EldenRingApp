@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: 'green',
     color: '#CCBD79',
-    fontFamily: 'Mantinia Regular',
+    fontFamily: 'Mantinia',
     fontSize: 22,
   },
   background: {

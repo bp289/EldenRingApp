@@ -8,6 +8,10 @@
     {
       "path": "assets/fonts/Mantinia Regular.ttf",
       "sha1": "87f378ffe6de165bcda43a04c22fc824e269ccae"
+    },
+    {
+      "path": "assets/fonts/Raleway-VariableFont_wght.ttf",
+      "sha1": "1313d0f3ae4fe109e8ee0d416bbae29b6f95dece"
     }
   ]
 }

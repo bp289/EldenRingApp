@@ -41,21 +41,12 @@ export default function Bosses({navigation}: Props): JSX.Element {
               image: item.image,
             });
           }}>
-          {item.image ? (
+          {item.image && (
             <ImageBackground
               blurRadius={2}
               style={styles.thumbnail}
               source={{
                 uri: item.image,
-              }}>
-              <Text style={styles.textStyle}>{item.name}</Text>
-            </ImageBackground>
-          ) : (
-            <ImageBackground
-              blurRadius={8}
-              style={styles.thumbnail}
-              source={{
-                uri: 'https://eldenring.wiki.fextralife.com/file/Elden-Ring/er_abductor_virgin.png',
               }}>
               <Text style={styles.textStyle}>{item.name}</Text>
             </ImageBackground>
@@ -78,7 +69,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   textStyle: {
-    fontFamily: 'Cormorant Garamond',
+    fontFamily: 'Raleway',
     fontSize: 20,
     color: '#F9DF99',
     marginTop: 40,

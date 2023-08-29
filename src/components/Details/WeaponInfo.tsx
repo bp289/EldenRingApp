@@ -5,16 +5,25 @@ import {useQuery} from '@apollo/client';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import type {HomeStackParams} from '../../types/pages';
 import {GET_WEAPON_DETAILS} from '../../GraphQL/Weapons';
+import {
+  WeaponDetailsQueryVariables,
+  WeaponDetailsQuery,
+} from '../../types/graphql';
 
 type Props = NativeStackScreenProps<HomeStackParams, 'BossInfo'>;
 
 export default function BossInfo({navigation, route}: Props): JSX.Element {
   const {id, name, image} = route.params;
 
-  const {loading, error, data} = useQuery(GET_WEAPON_DETAILS(id));
+  const {loading, error, data} = useQuery<
+    WeaponDetailsQuery,
+    WeaponDetailsQueryVariables
+  >(GET_WEAPON_DETAILS(id));
 
   const entityInfo = useMemo(() => {
-    return data ? data.getWeapon : [];
+    if (data) {
+      return data.getWeapon;
+    }
   }, [data]);
 
   if (loading) {
@@ -34,14 +43,13 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
             uri: image,
           }}></Image>
       </View>
-      <Text style={styles.header}>{entityInfo.description}</Text>
+      <Text style={styles.header}>{entityInfo?.description}</Text>
       <Text style={styles.header}>Damage</Text>
 
-      <Text style={styles.header}>{entityInfo.damage}</Text>
       <Text style={styles.header}>Category:</Text>
-      <Text style={styles.header}>{entityInfo.category}</Text>
+      <Text style={styles.header}>{entityInfo?.category}</Text>
       <Text style={styles.header}>Weight:</Text>
-      <Text style={styles.header}>{entityInfo.weight}</Text>
+      <Text style={styles.header}>{entityInfo?.weight}</Text>
       <Text style={styles.header}>Attributes</Text>
       <Text style={styles.header}>
         {entityInfo.attack.map(attribute => {

@@ -10,6 +10,14 @@ import {BossDetailsQuery, BossDetailsQueryVariables} from '../../types/graphql';
 
 type Props = NativeStackScreenProps<HomeStackParams, 'BossInfo'>;
 
+interface BossData {
+  description: string;
+  drops: string[];
+  region: string;
+  location: string;
+  healthPoints: string;
+}
+
 export default function BossInfo({navigation, route}: Props): JSX.Element {
   const {id, name, image} = route.params;
 
@@ -18,18 +26,21 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
     BossDetailsQueryVariables
   >(GET_BOSS_DETAILS(id));
 
-  const entityInfo = useMemo(() => {
-    return data?.boss
-      ? data.boss[0]
-      : {
-          _typename: null,
-          description: null,
-          drops: [],
-          healthPoints: null,
-          location: null,
-          region: null,
-        };
+  const parsedData = useMemo(() => {
+    if (data && data.boss) {
+      const boss = data.boss[0];
+      return boss as BossData;
+    }
+    return null;
   }, [data]);
+
+  const {
+    description = '',
+    drops = [],
+    location = '',
+    region = '',
+    healthPoints = 0,
+  } = parsedData || {};
 
   if (loading) {
     return <Spinner />;
@@ -48,11 +59,11 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
       />
       <Text style={styles.header}>{name}</Text>
       <View style={styles.hairline} />
-      <Text style={styles.rest}>{entityInfo?.description}</Text>
+      <Text style={styles.rest}>{description}</Text>
       <Text>Drops</Text>
       <Text style={styles.rest}>
-        {entityInfo!.drops!.map(drop => {
-          const number = entityInfo!.drops!.indexOf(drop) + 1;
+        {drops.map((drop: string) => {
+          const number = drops.indexOf(drop) + 1;
           return (
             <Text>
               {number}. {drop}
@@ -61,11 +72,11 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
         })}
       </Text>
       <Text>Location:</Text>
-      <Button title="Location">{entityInfo?.location}</Button>
+      <Button title="Location">{location}</Button>
       <Text>Region:</Text>
-      <Text>{entityInfo?.region}</Text>
+      <Text>{region}</Text>
       <Text>Health Points</Text>
-      <Text>{entityInfo?.healthPoints}</Text>
+      <Text>{healthPoints}</Text>
     </ScrollView>
   );
   // }

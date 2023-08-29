@@ -6,7 +6,6 @@ interface InfoPage {
 
 export type HomeStackParams = {
   MainPage: undefined;
-  List: undefined;
   Armors: undefined;
   Bosses: undefined;
   Weapons: undefined;
@@ -19,6 +18,20 @@ export type HomeStackParams = {
   Locations: undefined;
   Shields: undefined;
   Sorcery: undefined;
+  Spirits: undefined;
+  Talismans: undefined;
+  LocationInfo: InfoPage;
   BossInfo: InfoPage;
   WeaponInfo: InfoPage;
+  ShieldInfo: InfoPage;
+  AshOfWarInfo: InfoPage;
+  ClassInfo: InfoPage;
+  CreatureInfo: InfoPage;
+  IncantationsInfo: InfoPage;
+  ItemsInfo: InfoPage;
+  NPCInfo: InfoPage;
+  SorceryInfo: InfoPage;
+  SpiritInfo: InfoPage;
+  TalismanInfo: InfoPage;
+  ArmorInfo: InfoPage;
 };

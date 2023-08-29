@@ -4,17 +4,32 @@ import {Spinner} from '../Spinner';
 import {useQuery} from '@apollo/client';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import type {HomeStackParams} from '../../types/pages';
-import {GET_AOW_DETAILS} from '../../GraphQL/AshesOfWar';
+import {GET_ARMOR_DETAILS} from '../../GraphQL/Armors';
+import {
+  ArmorDetailsQuery,
+  ArmorDetailsQueryVariables,
+} from '../../types/graphql';
 
 type Props = NativeStackScreenProps<HomeStackParams, 'BossInfo'>;
 
 export default function BossInfo({navigation, route}: Props): JSX.Element {
   const {id, name, image} = route.params;
 
-  const {loading, error, data} = useQuery < GET_AOW_DETAILS(id);
+  const {loading, error, data} = useQuery<
+    ArmorDetailsQuery,
+    ArmorDetailsQueryVariables
+  >(GET_ARMOR_DETAILS(id));
 
   const entityInfo = useMemo(() => {
-    return data ? data.getWeapon : [];
+    return data
+      ? data.getArmor
+      : {
+          _typeName: ' ',
+          description: '',
+          dmgNegation: [],
+          resistance: [],
+          weight: [],
+        };
   }, [data]);
 
   if (loading) {
@@ -36,22 +51,6 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
       </View>
       <Text style={styles.header}>{entityInfo.description}</Text>
       <Text style={styles.header}>Damage</Text>
-
-      <Text style={styles.header}>{entityInfo.damage}</Text>
-      <Text style={styles.header}>Category:</Text>
-      <Text style={styles.header}>{entityInfo.category}</Text>
-      <Text style={styles.header}>Weight:</Text>
-      <Text style={styles.header}>{entityInfo.weight}</Text>
-      <Text style={styles.header}>Attributes</Text>
-      <Text style={styles.header}>
-        {entityInfo.attack.map(attribute => {
-          return (
-            <Text>
-              {attribute.name}: {attribute.amount}
-            </Text>
-          );
-        })}
-      </Text>
     </ScrollView>
   );
 }

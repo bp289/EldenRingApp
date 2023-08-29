@@ -1,5 +1,11 @@
 import React, {useMemo} from 'react';
-import {ScrollView, Text, ImageBackground, StyleSheet} from 'react-native';
+import {
+  ScrollView,
+  Text,
+  ImageBackground,
+  StyleSheet,
+  Button,
+} from 'react-native';
 import {Spinner} from '../Spinner';
 import {useQuery} from '@apollo/client';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
@@ -34,6 +40,24 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
         <Text style={styles.header}>{name}</Text>
       </ImageBackground>
       <Text style={styles.header}>{entityInfo.description}</Text>
+      <Text style={styles.header}>Drops</Text>
+      <Text style={styles.header}>
+        {entityInfo.drops.map((drop: string) => {
+          const number = entityInfo.drops.indexOf(drop) + 1;
+          return (
+            <Text>
+              {number}. {drop}
+            </Text>
+          );
+        })}
+      </Text>
+      <Text style={styles.header}>{entityInfo.Quote}</Text>
+      <Text style={styles.header}>Location:</Text>
+      <Button title="Location">{entityInfo.location}</Button>
+      <Text style={styles.header}>Region:</Text>
+      <Text style={styles.header}>{entityInfo.region}</Text>
+      <Text style={styles.header}>Health Points</Text>
+      <Text style={styles.header}>{entityInfo.healthPoints}</Text>
     </ScrollView>
   );
 }

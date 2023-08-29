@@ -4,14 +4,14 @@ import {Spinner} from '../Spinner';
 import {useQuery} from '@apollo/client';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import type {HomeStackParams} from '../../types/pages';
-import {GET_WEAPON_DETAILS} from '../../GraphQL/Weapons';
+import {GET_AOW_DETAILS} from '../../GraphQL/AshesOfWar';
 
 type Props = NativeStackScreenProps<HomeStackParams, 'BossInfo'>;
 
 export default function BossInfo({navigation, route}: Props): JSX.Element {
   const {id, name, image} = route.params;
 
-  const {loading, error, data} = useQuery(GET_WEAPON_DETAILS(id));
+  const {loading, error, data} = useQuery < GET_AOW_DETAILS(id);
 
   const entityInfo = useMemo(() => {
     return data ? data.getWeapon : [];

@@ -42,7 +42,7 @@ export default function Bosses({navigation}: Props): JSX.Element {
               navigation.navigate('BossInfo', {
                 name: item?.name || '',
                 id: item?.id || '',
-                image: item?.id || '',
+                image: item?.image || '',
               });
             }}>
             {item?.image && (

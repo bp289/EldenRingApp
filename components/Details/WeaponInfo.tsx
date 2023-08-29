@@ -39,13 +39,12 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
         }}>
         <Text style={styles.header}>{name}</Text>
       </ImageBackground>
-      {/* <Text>{JSON.stringify(entityInfo)}</Text> */}
       <Text style={styles.header}>{entityInfo.description}</Text>
       <Text style={styles.header}>Damage</Text>
 
       <Text style={styles.header}>{entityInfo.damage}</Text>
       <Text style={styles.header}>Category:</Text>
-      <Text>{entityInfo.category}</Text>
+      <Text style={styles.header}>{entityInfo.category}</Text>
       <Text style={styles.header}>Weight:</Text>
       <Text style={styles.header}>{entityInfo.weight}</Text>
       <Text style={styles.header}>Attributes</Text>

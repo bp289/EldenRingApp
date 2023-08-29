@@ -495,132 +495,142 @@ export type Weapon = {
   weight?: Maybe<Scalars['Float']['output']>;
 };
 
-export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+export type ArmorsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_1_Query = { __typename?: 'Query', armor?: Array<{ __typename?: 'Armor', id: string, name?: string | null, image?: string | null, category?: string | null } | null> | null };
+export type ArmorsQuery = { __typename?: 'Query', armor?: Array<{ __typename?: 'Armor', id: string, name?: string | null, image?: string | null, category?: string | null } | null> | null };
 
-export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
+export type ArmorDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_2_Query = { __typename?: 'Query', getArmor: { __typename?: 'Armor', description?: string | null, weight?: number | null, dmgNegation?: Array<{ __typename?: 'AttributeEntry', name?: string | null, amount?: number | null } | null> | null, resistance?: Array<{ __typename?: 'AttributeEntry', name?: string | null, amount?: number | null } | null> | null } };
+export type ArmorDetailsQuery = { __typename?: 'Query', getArmor: { __typename?: 'Armor', description?: string | null, weight?: number | null, dmgNegation?: Array<{ __typename?: 'AttributeEntry', name?: string | null, amount?: number | null } | null> | null, resistance?: Array<{ __typename?: 'AttributeEntry', name?: string | null, amount?: number | null } | null> | null } };
 
-export type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
+export type AshesOfWarQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_3_Query = { __typename?: 'Query', ashOfWar?: Array<{ __typename?: 'AshOfWar', id: string, name?: string | null, image?: string | null } | null> | null };
+export type AshesOfWarQuery = { __typename?: 'Query', ashOfWar?: Array<{ __typename?: 'AshOfWar', id: string, name?: string | null, image?: string | null } | null> | null };
 
-export type Unnamed_4_QueryVariables = Exact<{ [key: string]: never; }>;
+export type AshesOfWarDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_4_Query = { __typename?: 'Query', getAshOfWar: { __typename?: 'AshOfWar', description?: string | null, affinity?: string | null, skill?: string | null } };
+export type AshesOfWarDetailsQuery = { __typename?: 'Query', getAshOfWar: { __typename?: 'AshOfWar', description?: string | null, affinity?: string | null, skill?: string | null } };
 
-export type Unnamed_5_QueryVariables = Exact<{ [key: string]: never; }>;
+export type BossQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_5_Query = { __typename?: 'Query', boss?: Array<{ __typename?: 'Boss', id: string, name?: string | null, image?: string | null } | null> | null };
+export type BossQuery = { __typename?: 'Query', boss?: Array<{ __typename?: 'Boss', id: string, name?: string | null, image?: string | null, description?: string | null } | null> | null };
 
-export type Unnamed_6_QueryVariables = Exact<{ [key: string]: never; }>;
+export type BossDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_6_Query = { __typename?: 'Query', boss?: Array<{ __typename?: 'Boss', description?: string | null, location?: string | null, region?: string | null, drops?: Array<string | null> | null, healthPoints?: string | null } | null> | null };
+export type BossDetailsQuery = { __typename?: 'Query', boss?: Array<{ __typename?: 'Boss', description?: string | null, location?: string | null, region?: string | null, drops?: Array<string | null> | null, healthPoints?: string | null } | null> | null };
 
-export type Unnamed_7_QueryVariables = Exact<{ [key: string]: never; }>;
+export type ClassesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_7_Query = { __typename?: 'Query', class?: Array<{ __typename?: 'Class', id: string, name?: string | null, image?: string | null } | null> | null };
+export type ClassesQuery = { __typename?: 'Query', class?: Array<{ __typename?: 'Class', id: string, name?: string | null, image?: string | null } | null> | null };
 
-export type Unnamed_8_QueryVariables = Exact<{ [key: string]: never; }>;
+export type ClassDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_8_Query = { __typename?: 'Query', getClass: { __typename?: 'Class', id: string, name?: string | null, image?: string | null, description?: string | null, stats?: { __typename?: 'ClassStats', level?: string | null, vigor?: string | null, mind?: string | null, endurance?: string | null, strenght?: string | null, dexterity?: string | null, inteligence?: string | null, faith?: string | null, arcane?: string | null } | null } };
+export type ClassDetailsQuery = { __typename?: 'Query', getClass: { __typename?: 'Class', id: string, name?: string | null, image?: string | null, description?: string | null, stats?: { __typename?: 'ClassStats', level?: string | null, vigor?: string | null, mind?: string | null, endurance?: string | null, strenght?: string | null, dexterity?: string | null, inteligence?: string | null, faith?: string | null, arcane?: string | null } | null } };
 
-export type Unnamed_9_QueryVariables = Exact<{ [key: string]: never; }>;
+export type CreaturesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_9_Query = { __typename?: 'Query', creature?: Array<{ __typename?: 'Creature', id: string, name?: string | null, image?: string | null } | null> | null };
+export type CreaturesQuery = { __typename?: 'Query', creature?: Array<{ __typename?: 'Creature', id: string, name?: string | null, image?: string | null } | null> | null };
 
-export type Unnamed_10_QueryVariables = Exact<{ [key: string]: never; }>;
+export type CreatureDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_10_Query = { __typename?: 'Query', getCreature: { __typename?: 'Creature', id: string, name?: string | null, image?: string | null, location?: string | null, description?: string | null, drops?: Array<string | null> | null } };
+export type CreatureDetailsQuery = { __typename?: 'Query', getCreature: { __typename?: 'Creature', id: string, name?: string | null, image?: string | null, location?: string | null, description?: string | null, drops?: Array<string | null> | null } };
 
-export type Unnamed_11_QueryVariables = Exact<{ [key: string]: never; }>;
+export type IncantationsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_11_Query = { __typename?: 'Query', item?: Array<{ __typename?: 'Item', id: string, name?: string | null, image?: string | null } | null> | null };
+export type IncantationsQuery = { __typename?: 'Query', incantation?: Array<{ __typename?: 'Incantation', id: string, name?: string | null, image?: string | null } | null> | null };
 
-export type Unnamed_12_QueryVariables = Exact<{ [key: string]: never; }>;
+export type IncantationDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_12_Query = { __typename?: 'Query', getItem: { __typename?: 'Item', description?: string | null, effect?: string | null, type?: string | null } };
+export type IncantationDetailsQuery = { __typename?: 'Query', getIncantation: { __typename?: 'Incantation', description?: string | null, type?: string | null, cost?: number | null, slots?: number | null, effects?: string | null, requires?: Array<{ __typename?: 'AttributeEntry', amount?: number | null, name?: string | null } | null> | null } };
 
-export type Unnamed_13_QueryVariables = Exact<{ [key: string]: never; }>;
+export type ItemsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_13_Query = { __typename?: 'Query', location?: Array<{ __typename?: 'Location', id: string, name?: string | null, image?: string | null } | null> | null };
+export type ItemsQuery = { __typename?: 'Query', item?: Array<{ __typename?: 'Item', id: string, name?: string | null, image?: string | null } | null> | null };
 
-export type Unnamed_14_QueryVariables = Exact<{ [key: string]: never; }>;
+export type ItemDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_14_Query = { __typename?: 'Query', location?: Array<{ __typename?: 'Location', description?: string | null, region?: string | null } | null> | null };
+export type ItemDetailsQuery = { __typename?: 'Query', getItem: { __typename?: 'Item', description?: string | null, effect?: string | null, type?: string | null } };
 
-export type Unnamed_15_QueryVariables = Exact<{ [key: string]: never; }>;
+export type LocationsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_15_Query = { __typename?: 'Query', npc?: Array<{ __typename?: 'Npc', id: string, image?: string | null, location?: string | null } | null> | null };
+export type LocationsQuery = { __typename?: 'Query', location?: Array<{ __typename?: 'Location', id: string, name?: string | null, image?: string | null } | null> | null };
 
-export type Unnamed_16_QueryVariables = Exact<{ [key: string]: never; }>;
+export type LocationDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_16_Query = { __typename?: 'Query', getNpc: { __typename?: 'Npc', description?: string | null, quote?: string | null, location?: string | null, role?: string | null } };
+export type LocationDetailsQuery = { __typename?: 'Query', location?: Array<{ __typename?: 'Location', description?: string | null, region?: string | null } | null> | null };
 
-export type Unnamed_17_QueryVariables = Exact<{ [key: string]: never; }>;
+export type NpcsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_17_Query = { __typename?: 'Query', shield?: Array<{ __typename?: 'Shield', id: string, name?: string | null, image?: string | null } | null> | null };
+export type NpcsQuery = { __typename?: 'Query', npc?: Array<{ __typename?: 'Npc', id: string, name?: string | null, image?: string | null } | null> | null };
 
-export type Unnamed_18_QueryVariables = Exact<{ [key: string]: never; }>;
+export type NpcDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_18_Query = { __typename?: 'Query', getShield: { __typename?: 'Shield', description?: string | null, category?: string | null, weight?: number | null, attack?: Array<{ __typename?: 'AttributeEntry', amount?: number | null, name?: string | null } | null> | null, defence?: Array<{ __typename?: 'AttributeEntry', amount?: number | null, name?: string | null } | null> | null, scalesWith?: Array<{ __typename?: 'ScalingEntry', scaling?: string | null, name?: string | null } | null> | null, requiredAttributes?: Array<{ __typename?: 'AttributeEntry', amount?: number | null, name?: string | null } | null> | null } };
+export type NpcDetailsQuery = { __typename?: 'Query', getNpc: { __typename?: 'Npc', description?: string | null, quote?: string | null, location?: string | null, role?: string | null } };
 
-export type Unnamed_19_QueryVariables = Exact<{ [key: string]: never; }>;
+export type ShieldsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_19_Query = { __typename?: 'Query', sorcery?: Array<{ __typename?: 'Sorcery', id: string, name?: string | null, image?: string | null } | null> | null };
+export type ShieldsQuery = { __typename?: 'Query', shield?: Array<{ __typename?: 'Shield', id: string, name?: string | null, image?: string | null } | null> | null };
 
-export type Unnamed_20_QueryVariables = Exact<{ [key: string]: never; }>;
+export type ShieldDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_20_Query = { __typename?: 'Query', getSorcery: { __typename?: 'Sorcery', id: string, name?: string | null, image?: string | null, description?: string | null, cost?: number | null, slots?: number | null, effects?: string | null, requires?: Array<{ __typename?: 'AttributeEntry', amount?: number | null, name?: string | null } | null> | null } };
+export type ShieldDetailsQuery = { __typename?: 'Query', getShield: { __typename?: 'Shield', description?: string | null, category?: string | null, weight?: number | null, attack?: Array<{ __typename?: 'AttributeEntry', amount?: number | null, name?: string | null } | null> | null, defence?: Array<{ __typename?: 'AttributeEntry', amount?: number | null, name?: string | null } | null> | null, scalesWith?: Array<{ __typename?: 'ScalingEntry', scaling?: string | null, name?: string | null } | null> | null, requiredAttributes?: Array<{ __typename?: 'AttributeEntry', amount?: number | null, name?: string | null } | null> | null } };
 
-export type Unnamed_21_QueryVariables = Exact<{ [key: string]: never; }>;
+export type SorceriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_21_Query = { __typename?: 'Query', spirit?: Array<{ __typename?: 'Spirit', id: string, name?: string | null, image?: string | null } | null> | null };
+export type SorceriesQuery = { __typename?: 'Query', sorcery?: Array<{ __typename?: 'Sorcery', id: string, name?: string | null, image?: string | null } | null> | null };
 
-export type Unnamed_22_QueryVariables = Exact<{ [key: string]: never; }>;
+export type SorceryDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_22_Query = { __typename?: 'Query', getSpirit: { __typename?: 'Spirit', description?: string | null, fpCost?: string | null, hpCost?: string | null, effect?: string | null } };
+export type SorceryDetailsQuery = { __typename?: 'Query', getSorcery: { __typename?: 'Sorcery', id: string, name?: string | null, image?: string | null, description?: string | null, cost?: number | null, slots?: number | null, effects?: string | null, requires?: Array<{ __typename?: 'AttributeEntry', amount?: number | null, name?: string | null } | null> | null } };
 
-export type Unnamed_23_QueryVariables = Exact<{ [key: string]: never; }>;
+export type SpiritsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_23_Query = { __typename?: 'Query', talisman?: Array<{ __typename?: 'Talisman', id: string, name?: string | null, image?: string | null } | null> | null };
+export type SpiritsQuery = { __typename?: 'Query', spirit?: Array<{ __typename?: 'Spirit', id: string, name?: string | null, image?: string | null } | null> | null };
 
-export type Unnamed_24_QueryVariables = Exact<{ [key: string]: never; }>;
+export type GetSpritsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_24_Query = { __typename?: 'Query', getTalisman: { __typename?: 'Talisman', description?: string | null, effect?: string | null } };
+export type GetSpritsQuery = { __typename?: 'Query', getSpirit: { __typename?: 'Spirit', description?: string | null, fpCost?: string | null, hpCost?: string | null, effect?: string | null } };
 
-export type Unnamed_25_QueryVariables = Exact<{ [key: string]: never; }>;
+export type TalismansQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_25_Query = { __typename?: 'Query', weapon?: Array<{ __typename?: 'Weapon', id: string, name?: string | null, image?: string | null } | null> | null };
+export type TalismansQuery = { __typename?: 'Query', talisman?: Array<{ __typename?: 'Talisman', id: string, name?: string | null, image?: string | null } | null> | null };
 
-export type Unnamed_26_QueryVariables = Exact<{ [key: string]: never; }>;
+export type TalismanDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_26_Query = { __typename?: 'Query', getWeapon: { __typename?: 'Weapon', description?: string | null, category?: string | null, weight?: number | null, attack?: Array<{ __typename?: 'AttributeEntry', name?: string | null, amount?: number | null } | null> | null, defence?: Array<{ __typename?: 'AttributeEntry', name?: string | null, amount?: number | null } | null> | null, scalesWith?: Array<{ __typename?: 'ScalingEntry', name?: string | null, scaling?: string | null } | null> | null, requiredAttributes?: Array<{ __typename?: 'AttributeEntry', amount?: number | null, name?: string | null } | null> | null } };
+export type TalismanDetailsQuery = { __typename?: 'Query', getTalisman: { __typename?: 'Talisman', description?: string | null, effect?: string | null } };
+
+export type WeaponsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type WeaponsQuery = { __typename?: 'Query', weapon?: Array<{ __typename?: 'Weapon', id: string, name?: string | null, image?: string | null } | null> | null };
+
+export type WeaponDetailsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type WeaponDetailsQuery = { __typename?: 'Query', getWeapon: { __typename?: 'Weapon', description?: string | null, category?: string | null, weight?: number | null, attack?: Array<{ __typename?: 'AttributeEntry', name?: string | null, amount?: number | null } | null> | null, defence?: Array<{ __typename?: 'AttributeEntry', name?: string | null, amount?: number | null } | null> | null, scalesWith?: Array<{ __typename?: 'ScalingEntry', name?: string | null, scaling?: string | null } | null> | null, requiredAttributes?: Array<{ __typename?: 'AttributeEntry', amount?: number | null, name?: string | null } | null> | null } };

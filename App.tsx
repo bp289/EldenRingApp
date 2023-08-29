@@ -4,9 +4,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
 
-import Search from './screens/Search';
-import Home from './screens/Home';
-import BookMarks from './screens/Bookmarks';
+import Search from './src/screens/Search';
+import Home from './src/screens/Home';
+import BookMarks from './src/screens/Bookmarks';
 
 const API_KEY = 'https://eldenring.fanapis.com/api/graphql';
 

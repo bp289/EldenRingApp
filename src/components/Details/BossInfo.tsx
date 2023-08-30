@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
+
 import {Spinner} from '../Spinner';
 import {useQuery} from '@apollo/client';
 import LinearGradient from 'react-native-linear-gradient';
@@ -76,19 +77,19 @@ function LocationImage({locationName}: LocationImageProps): JSX.Element {
           </Text>
         </ImageBackground>
       ) : (
-        <>
+        <View style={styles.locationFallback}>
           <Text style={styles.rest}>
+            {name}
             <Image
               style={styles.icons}
               source={require('../../../assets/images/icons/Location.png')}
             />
-            {name}
           </Text>
           <Text style={styles.rest}>
             Unfortunately there is no further data available for this location.
-            You can refer here for further information:
+            You can refer here for further information: (will link to webview)
           </Text>
-        </>
+        </View>
       )}
     </>
   );
@@ -128,30 +129,43 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
 
       <Text style={styles.header}>{name}</Text>
       <View style={styles.divider} />
-      <Text style={styles.rest}>{data?.getBoss.description}</Text>
-      <Text style={styles.subheading}>Location </Text>
 
+      <Text style={styles.rest}>{data?.getBoss.description}</Text>
+      <View style={styles.titleContainer}>
+        <View style={styles.titleLine} />
+        <Text style={styles.subHeading}>Location</Text>
+        <View style={styles.titleLine} />
+      </View>
       <TouchableOpacity
         onPress={() => {
           console.log('navigating');
         }}>
         <LocationImage locationName={data?.getBoss.location || ''} />
       </TouchableOpacity>
-      <Text style={styles.subheading}>Drops</Text>
-      <View>
-        {drops.map(drop => {
-          const number = drops.indexOf(drop) + 1;
-          return (
-            <Text style={styles.list}>
-              {number}. {drop}
-            </Text>
-          );
-        })}
+      <Text style={styles.rest}>Region - {data?.getBoss.region}</Text>
+
+      <View style={styles.titleContainer}>
+        <View style={styles.titleLine} />
+        <Text style={styles.subHeading}>Stats & Details </Text>
+        <View style={styles.titleLine} />
       </View>
-      <Text>Region:</Text>
-      <Text>{data?.getBoss.region}</Text>
-      <Text>Health Points</Text>
-      <Text>{data?.getBoss.healthPoints}</Text>
+      <View style={styles.stats}>
+        <View>
+          <Text style={styles.subHeading2}> Drops</Text>
+          {drops.map(drop => {
+            const number = drops.indexOf(drop) + 1;
+            return (
+              <Text style={styles.list}>
+                {number}. {drop}
+              </Text>
+            );
+          })}
+        </View>
+        <View>
+          <Text style={styles.subHeading2}>Health Points</Text>
+          <Text style={styles.list}>{data?.getBoss.healthPoints}</Text>
+        </View>
+      </View>
     </ScrollView>
   );
   // }
@@ -177,15 +191,18 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
   },
-  subheading: {
+  subHeading: {
     fontFamily: 'Raleway',
-    fontSize: 35,
+    fontSize: 25,
     color: '#F9DF99',
     fontWeight: '500',
-    marginRight: 'auto',
-    marginLeft: 20,
-    marginTop: 20,
-    marginBottom: 10,
+  },
+  subHeading2: {
+    fontFamily: 'Raleway',
+    fontSize: 20,
+    marginLeft: 15,
+    color: '#F9DF99',
+    fontWeight: '500',
   },
   rest: {
     fontFamily: 'Raleway',
@@ -195,6 +212,7 @@ const styles = StyleSheet.create({
     marginRight: 30,
     marginLeft: 20,
     marginTop: 20,
+    marginBottom: 20,
   },
   location: {
     height: 200,
@@ -204,7 +222,13 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   locationFallback: {
-    height: 300,
+    width: 350,
+    borderWidth: 1,
+    borderColor: '#59593E',
+    textAlign: 'center',
+    marginTop: 20,
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   locationText: {
     fontFamily: 'Raleway',
@@ -222,6 +246,7 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     marginRight: 30,
     marginLeft: 20,
+    marginTop: 5,
   },
   linearGradient: {
     flex: 1,
@@ -232,8 +257,30 @@ const styles = StyleSheet.create({
     height: 3,
     width: 'auto',
   },
+  stats: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    width: 200,
+    marginTop: 20,
+    marginBottom: 5,
+    marginLeft: 65,
+    marginRight: 'auto',
+  },
+  titleLine: {
+    backgroundColor: '#59593E',
+    height: 2,
+    alighSelf: 'stretch',
+    width: 90,
+  },
+  titleContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
   icons: {
-    height: 30,
-    width: 30,
+    height: 23,
+    width: 23,
   },
 });

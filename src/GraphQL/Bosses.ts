@@ -11,14 +11,14 @@ export const GET_BOSS = gql`
   }
 `;
 
-export const GET_BOSS_DETAILS = (id: string) => gql`
-  query BossDetails {
-    boss(id: "${id}") {
-      description,
-      location,
-      region,
-      drops,
-      healthPoints,  
+export const GET_BOSS_DETAILS = gql`
+  query BossDetails($id: String!) {
+    getBoss(id: $id) {
+      description
+      location
+      region
+      drops
+      healthPoints
     }
   }
 `;

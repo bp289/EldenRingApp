@@ -12,20 +12,20 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-EldenRingApp-EldenRingAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-EldenRingApp-EldenRingAppTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		FC51018555AA4704AC667A93 /* Mantinia Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B796766FD84044BAB39A2164 /* Mantinia Regular.ttf */; };
-		66783B7371EB46259388BF9B /* CormorantGaramond-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4FF683AF45FB46FB886A3C89 /* CormorantGaramond-Regular.ttf */; };
-		31C44C28C6534144862D2578 /* Raleway-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3EDD72BCC3374F37A9DD8F40 /* Raleway-VariableFont_wght.ttf */; };
 		271A3411463041A2B380C844 /* CormorantGaramond-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5FFDC7EFCFE4C34B37FD2F4 /* CormorantGaramond-Bold.ttf */; };
+		31C44C28C6534144862D2578 /* Raleway-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3EDD72BCC3374F37A9DD8F40 /* Raleway-VariableFont_wght.ttf */; };
 		3C89A8598E10480F9063FD24 /* CormorantGaramond-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E47493AE2F4C4F3DA6EEFC1B /* CormorantGaramond-BoldItalic.ttf */; };
 		639FDFC426DE421AB36B8E78 /* CormorantGaramond-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 406FF4A7A9CF4B9A88D72043 /* CormorantGaramond-Italic.ttf */; };
+		66783B7371EB46259388BF9B /* CormorantGaramond-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4FF683AF45FB46FB886A3C89 /* CormorantGaramond-Regular.ttf */; };
+		7699B88040F8A987B510C191 /* libPods-EldenRingApp-EldenRingAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-EldenRingApp-EldenRingAppTests.a */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		93DE5062FDF74E6CB952F975 /* CormorantGaramond-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D508D780A65413DAD191181 /* CormorantGaramond-Light.ttf */; };
+		9C9FE4EEA9DC4848B35C6D28 /* CormorantGaramond-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7F5FFC9C2A604D9A8E28B0C5 /* CormorantGaramond-SemiBold.ttf */; };
+		9FE03E62D5EF4EE8BE37ADC9 /* CormorantGaramond-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57822BDC0BC54E049D89C607 /* CormorantGaramond-SemiBoldItalic.ttf */; };
 		AC6F6FAAB37143079DA385A6 /* CormorantGaramond-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 977B66B6265B48968C8CBD5D /* CormorantGaramond-LightItalic.ttf */; };
 		B4415B55C4B04C1EB6534484 /* CormorantGaramond-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DF703B1434594995B5D0F16E /* CormorantGaramond-Medium.ttf */; };
 		B4819A83460E4A008E8654FE /* CormorantGaramond-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5F5FA9EDF7345B0B2A15840 /* CormorantGaramond-MediumItalic.ttf */; };
-		9C9FE4EEA9DC4848B35C6D28 /* CormorantGaramond-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7F5FFC9C2A604D9A8E28B0C5 /* CormorantGaramond-SemiBold.ttf */; };
-		9FE03E62D5EF4EE8BE37ADC9 /* CormorantGaramond-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57822BDC0BC54E049D89C607 /* CormorantGaramond-SemiBoldItalic.ttf */; };
+		FC51018555AA4704AC667A93 /* Mantinia Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B796766FD84044BAB39A2164 /* Mantinia Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +42,7 @@
 		00E356EE1AD99517003FC87E /* EldenRingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EldenRingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* EldenRingAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EldenRingAppTests.m; sourceTree = "<group>"; };
+		0D508D780A65413DAD191181 /* CormorantGaramond-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "CormorantGaramond-Light.ttf"; path = "../assets/fonts/CormorantGaramond-Light.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* EldenRingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EldenRingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = EldenRingApp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = EldenRingApp/AppDelegate.mm; sourceTree = "<group>"; };
@@ -50,24 +51,23 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = EldenRingApp/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-EldenRingApp-EldenRingAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EldenRingApp-EldenRingAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-EldenRingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EldenRingApp.debug.xcconfig"; path = "Target Support Files/Pods-EldenRingApp/Pods-EldenRingApp.debug.xcconfig"; sourceTree = "<group>"; };
+		3EDD72BCC3374F37A9DD8F40 /* Raleway-VariableFont_wght.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Raleway-VariableFont_wght.ttf"; path = "../assets/fonts/Raleway-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		406FF4A7A9CF4B9A88D72043 /* CormorantGaramond-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "CormorantGaramond-Italic.ttf"; path = "../assets/fonts/CormorantGaramond-Italic.ttf"; sourceTree = "<group>"; };
+		4FF683AF45FB46FB886A3C89 /* CormorantGaramond-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "CormorantGaramond-Regular.ttf"; path = "../assets/fonts/CormorantGaramond-Regular.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-EldenRingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EldenRingApp.release.xcconfig"; path = "Target Support Files/Pods-EldenRingApp/Pods-EldenRingApp.release.xcconfig"; sourceTree = "<group>"; };
+		57822BDC0BC54E049D89C607 /* CormorantGaramond-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "CormorantGaramond-SemiBoldItalic.ttf"; path = "../assets/fonts/CormorantGaramond-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-EldenRingApp-EldenRingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EldenRingApp-EldenRingAppTests.debug.xcconfig"; path = "Target Support Files/Pods-EldenRingApp-EldenRingAppTests/Pods-EldenRingApp-EldenRingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-EldenRingApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EldenRingApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F5FFC9C2A604D9A8E28B0C5 /* CormorantGaramond-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "CormorantGaramond-SemiBold.ttf"; path = "../assets/fonts/CormorantGaramond-SemiBold.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = EldenRingApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-EldenRingApp-EldenRingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EldenRingApp-EldenRingAppTests.release.xcconfig"; path = "Target Support Files/Pods-EldenRingApp-EldenRingAppTests/Pods-EldenRingApp-EldenRingAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		977B66B6265B48968C8CBD5D /* CormorantGaramond-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "CormorantGaramond-LightItalic.ttf"; path = "../assets/fonts/CormorantGaramond-LightItalic.ttf"; sourceTree = "<group>"; };
+		B5F5FA9EDF7345B0B2A15840 /* CormorantGaramond-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "CormorantGaramond-MediumItalic.ttf"; path = "../assets/fonts/CormorantGaramond-MediumItalic.ttf"; sourceTree = "<group>"; };
+		B5FFDC7EFCFE4C34B37FD2F4 /* CormorantGaramond-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "CormorantGaramond-Bold.ttf"; path = "../assets/fonts/CormorantGaramond-Bold.ttf"; sourceTree = "<group>"; };
+		B796766FD84044BAB39A2164 /* Mantinia Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Mantinia Regular.ttf"; path = "../assets/fonts/Mantinia Regular.ttf"; sourceTree = "<group>"; };
+		DF703B1434594995B5D0F16E /* CormorantGaramond-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "CormorantGaramond-Medium.ttf"; path = "../assets/fonts/CormorantGaramond-Medium.ttf"; sourceTree = "<group>"; };
+		E47493AE2F4C4F3DA6EEFC1B /* CormorantGaramond-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "CormorantGaramond-BoldItalic.ttf"; path = "../assets/fonts/CormorantGaramond-BoldItalic.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		B796766FD84044BAB39A2164 /* Mantinia Regular.ttf */ = {isa = PBXFileReference; name = "Mantinia Regular.ttf"; path = "../assets/fonts/Mantinia Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		4FF683AF45FB46FB886A3C89 /* CormorantGaramond-Regular.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-Regular.ttf"; path = "../assets/fonts/CormorantGaramond-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		3EDD72BCC3374F37A9DD8F40 /* Raleway-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "Raleway-VariableFont_wght.ttf"; path = "../assets/fonts/Raleway-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		B5FFDC7EFCFE4C34B37FD2F4 /* CormorantGaramond-Bold.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-Bold.ttf"; path = "../assets/fonts/CormorantGaramond-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E47493AE2F4C4F3DA6EEFC1B /* CormorantGaramond-BoldItalic.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-BoldItalic.ttf"; path = "../assets/fonts/CormorantGaramond-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		406FF4A7A9CF4B9A88D72043 /* CormorantGaramond-Italic.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-Italic.ttf"; path = "../assets/fonts/CormorantGaramond-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		0D508D780A65413DAD191181 /* CormorantGaramond-Light.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-Light.ttf"; path = "../assets/fonts/CormorantGaramond-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		977B66B6265B48968C8CBD5D /* CormorantGaramond-LightItalic.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-LightItalic.ttf"; path = "../assets/fonts/CormorantGaramond-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		DF703B1434594995B5D0F16E /* CormorantGaramond-Medium.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-Medium.ttf"; path = "../assets/fonts/CormorantGaramond-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		B5F5FA9EDF7345B0B2A15840 /* CormorantGaramond-MediumItalic.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-MediumItalic.ttf"; path = "../assets/fonts/CormorantGaramond-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		7F5FFC9C2A604D9A8E28B0C5 /* CormorantGaramond-SemiBold.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-SemiBold.ttf"; path = "../assets/fonts/CormorantGaramond-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		57822BDC0BC54E049D89C607 /* CormorantGaramond-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-SemiBoldItalic.ttf"; path = "../assets/fonts/CormorantGaramond-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +130,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4E86F546449D4CF9BB7F0EAF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B796766FD84044BAB39A2164 /* Mantinia Regular.ttf */,
+				4FF683AF45FB46FB886A3C89 /* CormorantGaramond-Regular.ttf */,
+				3EDD72BCC3374F37A9DD8F40 /* Raleway-VariableFont_wght.ttf */,
+				B5FFDC7EFCFE4C34B37FD2F4 /* CormorantGaramond-Bold.ttf */,
+				E47493AE2F4C4F3DA6EEFC1B /* CormorantGaramond-BoldItalic.ttf */,
+				406FF4A7A9CF4B9A88D72043 /* CormorantGaramond-Italic.ttf */,
+				0D508D780A65413DAD191181 /* CormorantGaramond-Light.ttf */,
+				977B66B6265B48968C8CBD5D /* CormorantGaramond-LightItalic.ttf */,
+				DF703B1434594995B5D0F16E /* CormorantGaramond-Medium.ttf */,
+				B5F5FA9EDF7345B0B2A15840 /* CormorantGaramond-MediumItalic.ttf */,
+				7F5FFC9C2A604D9A8E28B0C5 /* CormorantGaramond-SemiBold.ttf */,
+				57822BDC0BC54E049D89C607 /* CormorantGaramond-SemiBoldItalic.ttf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,26 +192,6 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		4E86F546449D4CF9BB7F0EAF /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				B796766FD84044BAB39A2164 /* Mantinia Regular.ttf */,
-				4FF683AF45FB46FB886A3C89 /* CormorantGaramond-Regular.ttf */,
-				3EDD72BCC3374F37A9DD8F40 /* Raleway-VariableFont_wght.ttf */,
-				B5FFDC7EFCFE4C34B37FD2F4 /* CormorantGaramond-Bold.ttf */,
-				E47493AE2F4C4F3DA6EEFC1B /* CormorantGaramond-BoldItalic.ttf */,
-				406FF4A7A9CF4B9A88D72043 /* CormorantGaramond-Italic.ttf */,
-				0D508D780A65413DAD191181 /* CormorantGaramond-Light.ttf */,
-				977B66B6265B48968C8CBD5D /* CormorantGaramond-LightItalic.ttf */,
-				DF703B1434594995B5D0F16E /* CormorantGaramond-Medium.ttf */,
-				B5F5FA9EDF7345B0B2A15840 /* CormorantGaramond-MediumItalic.ttf */,
-				7F5FFC9C2A604D9A8E28B0C5 /* CormorantGaramond-SemiBold.ttf */,
-				57822BDC0BC54E049D89C607 /* CormorantGaramond-SemiBoldItalic.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 

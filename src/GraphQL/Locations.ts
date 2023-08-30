@@ -10,11 +10,19 @@ export const GET_LOCATIONS = gql`
   }
 `;
 
-export const GET_LOCATION_DETAILS = (id: string) => gql`
-  query LocationDetails {
-    location(id: "${id}") {
+export const GET_LOCATION_DETAILS = gql`
+  query LocationDetails($id: String!) {
+    getLocation(id: $id) {
       description
       region
+    }
+  }
+`;
+
+export const GET_LOCATION_IMAGE_BY_NAME = gql`
+  query LocationImageByName($name: String!) {
+    location(name: $name) {
+      image
     }
   }
 `;

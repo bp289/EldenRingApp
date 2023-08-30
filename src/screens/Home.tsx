@@ -8,6 +8,7 @@ import {
   FlatList,
 } from 'react-native';
 
+import {ImageSourcePropType} from 'react-native';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -27,15 +28,24 @@ import AshesOfWar from '../components/Lists/AshesOfWar';
 
 import type {HomeStackParams} from '../types/pages';
 
+type image = {
+  [key: string]: ImageSourcePropType;
+};
+
+const images: image = {
+  Bosses: require('../../assets/images/Bosses.png'),
+  Weapons: require('../../assets/images/Weapons.png'),
+  Locations: require('../../assets/images/Locations.png'),
+};
 const categories = [
   'Bosses',
   'Weapons',
-  'Armors',
-  'Items',
-  'Creatures',
-  'Sorcery',
+  // 'Armors',
+  // 'Items',
+  // 'Creatures',
+  // 'Sorcery',
   'Locations',
-  'Ashes Of War',
+  // 'Ashes Of War',
 ];
 type Props = NativeStackScreenProps<HomeStackParams, 'MainPage'>;
 
@@ -50,10 +60,7 @@ const MainPage = ({navigation}: Props): JSX.Element => {
       renderItem={({item}) => (
         <TouchableOpacity onPress={() => navigation.navigate(item)}>
           <View style={styles.card}>
-            <Image
-              style={styles.thumbnail}
-              source={require('../../assets/images/bosses.webp')}
-            />
+            <Image style={styles.thumbnail} source={images[item]} />
 
             <Text style={styles.text}>{item}</Text>
           </View>

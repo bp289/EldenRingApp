@@ -3,9 +3,13 @@ import {
   StyleSheet,
   Text,
   FlatList,
+  View,
   ImageBackground,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+
 import {useQuery} from '@apollo/client';
 import {GET_BOSS} from '../../GraphQL/Bosses';
 
@@ -21,8 +25,8 @@ export default function Bosses({navigation}: Props): JSX.Element {
   const {loading, error, data} = useQuery<BossQuery, BossQueryVariables>(
     GET_BOSS,
   );
-  const {boss} = useMemo(() => {
-    return data ? data : {boss: undefined};
+  const boss = useMemo(() => {
+    return data ? data?.boss : [];
   }, [data]);
 
   if (loading) {
@@ -32,7 +36,15 @@ export default function Bosses({navigation}: Props): JSX.Element {
     return <Text>`Error! ${error.message}`</Text>;
   }
   return (
-    <>
+    <ScrollView style={styles.backGround}>
+      <ImageBackground
+        style={styles.imageBackground}
+        source={require('../../../assets/images/Background.png')}>
+        <LinearGradient
+          colors={['transparent', '#000']}
+          style={styles.linearGradient}
+        />
+      </ImageBackground>
       <FlatList
         style={styles.container}
         data={boss}
@@ -47,6 +59,7 @@ export default function Bosses({navigation}: Props): JSX.Element {
             }}>
             {item?.image && (
               <ImageBackground
+                borderRadius={10}
                 blurRadius={2}
                 style={styles.thumbnail}
                 source={{
@@ -59,16 +72,19 @@ export default function Bosses({navigation}: Props): JSX.Element {
         )}
         keyExtractor={item => item?.id || ''}
       />
-    </>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingBottom: 15,
   },
   thumbnail: {
     height: 100,
+    marginTop: 10,
+    marginBottom: 10,
     flex: 1,
     justifyContent: 'center',
     resizeMode: 'cover',
@@ -79,5 +95,16 @@ const styles = StyleSheet.create({
     color: '#F9DF99',
     marginTop: 40,
     marginLeft: 10,
+  },
+  linearGradient: {
+    flex: 1,
+    height: 100,
+  },
+  imageBackground: {
+    height: 300,
+  },
+  backGround: {
+    backgroundColor: '#000',
+    height: 800,
   },
 });

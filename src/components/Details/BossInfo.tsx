@@ -4,10 +4,8 @@ import {
   Text,
   Image,
   StyleSheet,
-  Button,
   View,
   ImageBackground,
-  Touchable,
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
@@ -250,7 +248,6 @@ const styles = StyleSheet.create({
   },
   linearGradient: {
     flex: 1,
-    borderRadius: 5,
   },
   divider: {
     backgroundColor: '#59593E',

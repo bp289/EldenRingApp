@@ -41,9 +41,9 @@ export default function Armors({navigation}: Props): JSX.Element {
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('ArmorInfo', {
-              name: item?.name || '',
-              id: item?.id || '',
-              image: item?.id || '',
+              name: item!.name!,
+              id: item!.id,
+              image: item!.id,
             });
           }}>
           {item?.image && (
@@ -58,7 +58,6 @@ export default function Armors({navigation}: Props): JSX.Element {
           )}
         </TouchableOpacity>
       )}
-      keyExtractor={item => item?.id || ''}
     />
   );
 }

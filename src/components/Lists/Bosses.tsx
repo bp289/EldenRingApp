@@ -6,7 +6,6 @@ import {
   View,
   ImageBackground,
   TouchableOpacity,
-  ScrollView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -86,7 +85,7 @@ export default function Bosses({navigation}: Props): JSX.Element {
             )}
           </>
         )}
-        keyExtractor={item => item?.id || ''}
+        keyExtractor={item => item!.id}
       />
     </View>
   );
@@ -140,7 +139,6 @@ const styles = StyleSheet.create({
   titleLine: {
     backgroundColor: '#F9DF99',
     height: 2,
-    alighSelf: 'stretch',
     width: 90,
   },
   titleContainer: {

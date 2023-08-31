@@ -150,10 +150,10 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
       <View style={styles.stats}>
         <View>
           <Text style={styles.subHeading2}> Drops</Text>
-          {drops.map(drop => {
-            const number = drops.indexOf(drop) + 1;
+          {drops.map((drop, index) => {
+            const number = index + 1;
             return (
-              <Text style={styles.list}>
+              <Text key={`${drop}-${index}`} style={styles.list}>
                 {number}. {drop}
               </Text>
             );

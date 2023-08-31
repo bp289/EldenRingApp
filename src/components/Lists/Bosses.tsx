@@ -36,43 +36,59 @@ export default function Bosses({navigation}: Props): JSX.Element {
     return <Text>`Error! ${error.message}`</Text>;
   }
   return (
-    <ScrollView style={styles.backGround}>
-      <ImageBackground
-        style={styles.imageBackground}
-        source={require('../../../assets/images/Background.png')}>
-        <LinearGradient
-          colors={['transparent', '#000']}
-          style={styles.linearGradient}
-        />
-      </ImageBackground>
+    <View style={styles.backGround}>
       <FlatList
         style={styles.container}
         data={boss}
+        ListHeaderComponent={
+          <ImageBackground
+            style={styles.imageBackground}
+            source={require('../../../assets/images/Bosses.png')}>
+            <LinearGradient
+              colors={['transparent', '#050300']}
+              style={styles.linearGradient}>
+              <View style={styles.titleContainer}>
+                <View style={styles.titleLine} />
+                <Text style={styles.header}>Bosses </Text>
+                <View style={styles.titleLine} />
+              </View>
+            </LinearGradient>
+          </ImageBackground>
+        }
         renderItem={({item}) => (
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('BossInfo', {
-                name: item?.name || '',
-                id: item?.id || '',
-                image: item?.image || '',
-              });
-            }}>
+          <>
             {item?.image && (
-              <ImageBackground
-                borderRadius={10}
-                blurRadius={2}
-                style={styles.thumbnail}
-                source={{
-                  uri: item.image,
+              <TouchableOpacity
+                style={styles.thumbnailContainer}
+                onPress={() => {
+                  navigation.navigate('BossInfo', {
+                    name: item?.name || '',
+                    id: item?.id || '',
+                    image: item?.image || '',
+                  });
                 }}>
-                <Text style={styles.textStyle}>{item.name}</Text>
-              </ImageBackground>
+                <ImageBackground
+                  blurRadius={2}
+                  borderRadius={6}
+                  style={styles.thumbnail}
+                  source={{
+                    uri: item.image,
+                  }}>
+                  <LinearGradient
+                    end={{x: 0.0, y: 1.0}}
+                    start={{x: 0.5, y: 2.0}}
+                    colors={['transparent', '#050300']}
+                    style={styles.linearGradient}>
+                    <Text style={styles.textStyle}>{item.name}</Text>
+                  </LinearGradient>
+                </ImageBackground>
+              </TouchableOpacity>
             )}
-          </TouchableOpacity>
+          </>
         )}
         keyExtractor={item => item?.id || ''}
       />
-    </ScrollView>
+    </View>
   );
 }
 
@@ -83,17 +99,31 @@ const styles = StyleSheet.create({
   },
   thumbnail: {
     height: 100,
-    marginTop: 10,
-    marginBottom: 10,
     flex: 1,
     justifyContent: 'center',
     resizeMode: 'cover',
+  },
+  thumbnailContainer: {
+    backgroundColor: '#050300',
+    margin: 10,
+    borderBottomWidth: 5,
+    borderBottomColor: '#F9DF99',
+    borderRadius: 9,
+  },
+  header: {
+    fontFamily: 'Raleway',
+    fontSize: 45,
+    color: '#F9DF99',
+    fontWeight: '500',
+    marginLeft: 15,
+    marginTop: 20,
+    marginBottom: 20,
   },
   textStyle: {
     fontFamily: 'Raleway',
     fontSize: 20,
     color: '#F9DF99',
-    marginTop: 40,
+    marginTop: 20,
     marginLeft: 10,
   },
   linearGradient: {
@@ -101,10 +131,22 @@ const styles = StyleSheet.create({
     height: 100,
   },
   imageBackground: {
-    height: 300,
+    height: 200,
   },
   backGround: {
-    backgroundColor: '#000',
+    backgroundColor: '#050300',
     height: 800,
+  },
+  titleLine: {
+    backgroundColor: '#F9DF99',
+    height: 2,
+    alighSelf: 'stretch',
+    width: 90,
+  },
+  titleContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
   },
 });

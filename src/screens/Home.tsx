@@ -6,8 +6,9 @@ import {
   StyleSheet,
   Image,
   FlatList,
+  ImageBackground,
 } from 'react-native';
-
+import LinearGradient from 'react-native-linear-gradient';
 import {ImageSourcePropType} from 'react-native';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -52,21 +53,36 @@ type Props = NativeStackScreenProps<HomeStackParams, 'MainPage'>;
 const HomeStack = createNativeStackNavigator<HomeStackParams>();
 const MainPage = ({navigation}: Props): JSX.Element => {
   return (
-    <FlatList
-      ListHeaderComponent={null}
-      ListFooterComponent={null}
-      ListFooterComponentStyle={null}
-      data={categories}
-      renderItem={({item}) => (
-        <TouchableOpacity onPress={() => navigation.navigate(item)}>
-          <View style={styles.card}>
-            <Image style={styles.thumbnail} source={images[item]} />
-
-            <Text style={styles.text}>{item}</Text>
-          </View>
-        </TouchableOpacity>
-      )}
-    />
+    <View style={styles.background}>
+      <FlatList
+        ListHeaderComponent={
+          <ImageBackground
+            style={styles.imageBackground}
+            source={require('../../assets/images/Background.png')}>
+            <LinearGradient
+              colors={['transparent', '#050300']}
+              style={styles.linearGradient}>
+              <Text style={styles.title}>Elden Ring Wiki</Text>
+            </LinearGradient>
+          </ImageBackground>
+        }
+        ListFooterComponentStyle={null}
+        data={categories}
+        renderItem={({item}) => (
+          <TouchableOpacity
+            style={styles.thumbnailContainer}
+            onPress={() => navigation.navigate(item)}>
+            <View>
+              <Text style={styles.text}>{item}</Text>
+              <Text style={styles.text}>(Info): </Text>
+            </View>
+            <View>
+              <Image style={styles.thumbnail} source={images[item]} />
+            </View>
+          </TouchableOpacity>
+        )}
+      />
+    </View>
   );
 };
 
@@ -107,7 +123,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   text: {
-    marginRight: 10,
+    marginLeft: 10,
     marginTop: 9,
     color: '#F9DF99',
     fontFamily: 'Raleway',
@@ -117,14 +133,44 @@ const styles = StyleSheet.create({
   subtext: {
     color: '#E4C75E',
   },
+  title: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    color: '#F9DF99',
+    fontFamily: 'Raleway',
+    fontSize: 45,
+    fontWeight: 'bold',
+  },
+  linearGradient: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: 100,
+  },
   background: {
-    backgroundColor: '#59593E',
+    backgroundColor: '#050300',
+  },
+  imageBackground: {
+    height: 200,
   },
   thumbnail: {
+    height: 80,
+    width: 80,
+    borderRadius: 10,
+    borderWidth: 2,
     borderColor: '#59593E',
-    borderWidth: 3,
-    width: 100,
-    height: 100,
+    marginTop: 10,
+    marginRight: 10,
+  },
+  thumbnailContainer: {
+    height: 105,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#182120',
     margin: 10,
+    borderBottomWidth: 5,
+    borderBottomColor: '#59593E',
+    borderRadius: 9,
   },
 });

@@ -639,7 +639,7 @@ export type TalismanDetailsQuery = { __typename?: 'Query', getTalisman: { __type
 export type WeaponsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type WeaponsQuery = { __typename?: 'Query', weapon?: Array<{ __typename?: 'Weapon', id: string, name?: string | null, image?: string | null } | null> | null };
+export type WeaponsQuery = { __typename?: 'Query', weapon?: Array<{ __typename?: 'Weapon', id: string, name?: string | null, image?: string | null, category?: string | null } | null> | null };
 
 export type WeaponDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 

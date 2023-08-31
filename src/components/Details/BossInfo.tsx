@@ -120,7 +120,7 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
           uri: image,
         }}>
         <LinearGradient
-          colors={['transparent', '#0E3F39']}
+          colors={['transparent', '#050300']}
           style={styles.linearGradient}
         />
       </ImageBackground>
@@ -171,7 +171,7 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#0E3F39',
+    backgroundColor: '#050300',
   },
   thumbnail: {
     height: 400,

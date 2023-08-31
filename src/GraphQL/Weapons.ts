@@ -6,6 +6,7 @@ export const GET_WEAPONS = gql`
       id
       name
       image
+      category
     }
   }
 `;

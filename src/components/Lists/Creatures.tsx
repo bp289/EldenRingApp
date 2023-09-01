@@ -5,6 +5,8 @@ import {
   FlatList,
   ImageBackground,
   TouchableOpacity,
+  View,
+  SectionList,
 } from 'react-native';
 import {useQuery} from '@apollo/client';
 
@@ -14,6 +16,7 @@ import type {HomeStackParams} from '../../types/Pages';
 import {Spinner} from '../Spinner';
 import {CreaturesQuery, CreaturesQueryVariables} from '../../types/graphql';
 import {GET_CREATURES} from '../../GraphQL/Creatures';
+import {sortData, section, entityInfo} from '../../utils/sortdata';
 
 type Props = NativeStackScreenProps<HomeStackParams, 'Creatures'>;
 
@@ -27,6 +30,12 @@ export default function Creatures({navigation}: Props): JSX.Element {
     return data ? data : {creature: undefined};
   }, [data]);
 
+  const sections = useMemo(() => {
+    return creature
+      ? sortData(creature as Array<entityInfo>)
+      : ([] as Array<section>);
+  }, [creature]);
+
   if (loading) {
     return <Spinner />;
   }
@@ -34,20 +43,21 @@ export default function Creatures({navigation}: Props): JSX.Element {
     return <Text>`Error! ${error.message}`</Text>;
   }
 
+  console.log(data);
+
   return (
-    <FlatList
-      style={styles.container}
-      data={creature}
+    <SectionList
+      sections={sections}
       renderItem={({item}) => (
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('CreatureInfo', {
-              name: item?.name || '',
-              id: item?.id || '',
-              image: item?.id || '',
+              name: item!.name,
+              id: item!.id,
+              image: item!.id,
             });
           }}>
-          {item?.image && (
+          {item!.image && (
             <ImageBackground
               blurRadius={2}
               style={styles.thumbnail}
@@ -59,7 +69,8 @@ export default function Creatures({navigation}: Props): JSX.Element {
           )}
         </TouchableOpacity>
       )}
-      keyExtractor={item => item?.id || ''}
+      renderSectionHeader={({section: {title}}) => <Text>{title}</Text>}
+      keyExtractor={item => item.id}
     />
   );
 }

@@ -40,26 +40,11 @@ export const allText = {
     color: '#F9DF99',
     textAlign: 'right',
   },
-};
-
-export const dropDown = {
-  main: {
-    width: '95%',
-    backgroundColor: '#182120',
-    margin: 10,
-    borderBottomWidth: 5,
-    borderBottomColor: '#59593E',
-    borderRadius: 9,
-  },
-  chevronClosed: {
+  dropDownRow: {
+    fontFamily: 'Raleway',
+    fontSize: 20,
     marginLeft: 10,
-    height: 23,
-    width: 23,
-  },
-  chevronOpen: {
-    marginLeft: 10,
-    height: 23,
-    width: 23,
-    transform: [{rotate: '90deg'}],
+    color: '#F9DF99',
+    textAlign: 'center',
   },
 };

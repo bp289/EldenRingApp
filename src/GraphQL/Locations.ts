@@ -6,6 +6,7 @@ export const GET_LOCATIONS = gql`
       id
       name
       image
+      region
     }
   }
 `;

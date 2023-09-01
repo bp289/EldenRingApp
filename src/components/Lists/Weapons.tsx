@@ -9,7 +9,8 @@ import {
   Image,
 } from 'react-native';
 
-import {allText, dropDown} from '../../styles/Text';
+import {allText} from '../../styles/Text';
+import {dropDown} from '../../styles/dropDown';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {useQuery} from '@apollo/client';
@@ -121,6 +122,8 @@ export default function Weapons({navigation}: Props): JSX.Element {
                   );
                 }}
                 dropdownIconPosition={'left'}
+                rowStyle={weaponMenu.rowStyle}
+                rowTextStyle={text.dropDownRow}
               />
             </LinearGradient>
           </ImageBackground>

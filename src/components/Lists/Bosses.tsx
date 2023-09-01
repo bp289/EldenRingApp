@@ -2,10 +2,10 @@ import React, {useMemo} from 'react';
 import {
   StyleSheet,
   Text,
-  FlatList,
   View,
   ImageBackground,
   TouchableOpacity,
+  SectionList,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -17,6 +17,7 @@ import type {HomeStackParams} from '../../types/Pages';
 
 import {Spinner} from '../Spinner';
 import {BossQuery, BossQueryVariables} from '../../types/graphql';
+import {sortData, section, entityInfo} from '../../utils/sortdata';
 
 type Props = NativeStackScreenProps<HomeStackParams, 'Bosses'>;
 
@@ -24,9 +25,15 @@ export default function Bosses({navigation}: Props): JSX.Element {
   const {loading, error, data} = useQuery<BossQuery, BossQueryVariables>(
     GET_BOSS,
   );
-  const boss = useMemo(() => {
+  const bossData = useMemo(() => {
     return data ? data?.boss : [];
   }, [data]);
+
+  const sections = useMemo(() => {
+    return bossData
+      ? sortData(bossData as Array<entityInfo>)
+      : ([] as Array<section>);
+  }, [bossData]);
 
   if (loading) {
     return <Spinner />;
@@ -36,9 +43,45 @@ export default function Bosses({navigation}: Props): JSX.Element {
   }
   return (
     <View style={styles.backGround}>
-      <FlatList
+      {/* <FlatList
         style={styles.container}
         data={boss}
+        renderItem={({item}) => (
+          <>
+            {item?.image && (
+              <TouchableOpacity
+                style={styles.thumbnailContainer}
+                onPress={() => {
+                  navigation.navigate('BossInfo', {
+                    name: item?.name || '',
+                    id: item?.id || '',
+                    image: item?.image || '',
+                  });
+                }}>
+                <ImageBackground
+                  blurRadius={2}
+                  borderRadius={6}
+                  style={styles.thumbnail}
+                  source={{
+                    uri: item.image,
+                  }}>
+                  <LinearGradient
+                    end={{x: 0.0, y: 1.0}}
+                    start={{x: 0.5, y: 2.0}}
+                    colors={['transparent', '#050300']}
+                    style={styles.linearGradient}>
+                    <Text style={styles.textStyle}>{item.name}</Text>
+                  </LinearGradient>
+                </ImageBackground>
+              </TouchableOpacity>
+            )}
+          </>
+        )}
+        keyExtractor={item => item!.id}
+      /> */}
+
+      <SectionList
+        sections={sections}
         ListHeaderComponent={
           <ImageBackground
             style={styles.imageBackground}
@@ -85,7 +128,8 @@ export default function Bosses({navigation}: Props): JSX.Element {
             )}
           </>
         )}
-        keyExtractor={item => item!.id}
+        renderSectionHeader={({section: {title}}) => <Text>{title}</Text>}
+        keyExtractor={item => item.id}
       />
     </View>
   );

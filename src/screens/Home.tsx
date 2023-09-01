@@ -22,6 +22,7 @@ import WeaponInfo from '../components/Details/WeaponInfo';
 import Weapons from '../components/Lists/Weapons';
 import Bosses from '../components/Lists/Bosses';
 import Armors from '../components/Lists/Items';
+import Creatures from '../components/Lists/Creatures';
 import Items from '../components/Lists/Items';
 import Sorcery from '../components/Lists/Sorcery';
 import Locations from '../components/Lists/Locations';
@@ -37,13 +38,14 @@ const images: image = {
   Bosses: require('../../assets/images/Bosses.png'),
   Weapons: require('../../assets/images/Weapons.png'),
   Locations: require('../../assets/images/Locations.png'),
+  Creatures: require('../../assets/images/Creatures.jpeg'),
 };
 const categories = [
   'Bosses',
   'Weapons',
   // 'Armors',
   // 'Items',
-  // 'Creatures',
+  'Creatures',
   // 'Sorcery',
   'Locations',
   // 'Ashes Of War',
@@ -95,10 +97,9 @@ export default function Home(): JSX.Element {
       <HomeStack.Screen name="Locations" component={Locations} />
       <HomeStack.Screen name="AshesOfWar" component={AshesOfWar} />
       <HomeStack.Screen name="Weapons" component={Weapons} />
-      <HomeStack.Screen name="Armors" component={Armors} />
+      <HomeStack.Screen name="Creatures" component={Creatures} />
       <HomeStack.Screen name="Items" component={Items} />
       <HomeStack.Screen name="BossInfo" component={BossInfo} />
-      <HomeStack.Screen name="WeaponInfo" component={WeaponInfo} />
     </HomeStack.Navigator>
   );
 }

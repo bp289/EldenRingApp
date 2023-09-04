@@ -24,7 +24,7 @@ import SelectDropdown from 'react-native-select-dropdown';
 
 type Props = NativeStackScreenProps<HomeStackParams, 'Weapons'>;
 
-interface axe {
+interface WeaponItem {
   __typename: string;
   category: string;
   id: string;
@@ -33,10 +33,10 @@ interface axe {
 }
 
 interface categories {
-  [category: string]: axe[];
+  [category: string]: WeaponItem[];
 }
 
-function groupCategories(data: Array<axe>): categories {
+function groupCategories(data: Array<WeaponItem>): categories {
   const categories: categories = {};
   data.forEach(entry => {
     const currentCategory = entry.category;
@@ -55,7 +55,7 @@ export default function Weapons({navigation}: Props): JSX.Element {
   );
   const groupedWeapons = useMemo(() => {
     if (data) {
-      return groupCategories(data?.weapon as Array<axe>);
+      return groupCategories(data?.weapon as Array<WeaponItem>);
     } else {
       return {} as categories;
     }

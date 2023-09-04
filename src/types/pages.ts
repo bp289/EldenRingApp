@@ -26,7 +26,7 @@ export type HomeStackParams = {
   ShieldInfo: InfoPage;
   AshOfWarInfo: InfoPage;
   ClassInfo: InfoPage;
-  CreatureInfo: InfoPage;
+  CreaturesInfo: InfoPage;
   IncantationsInfo: InfoPage;
   ItemsInfo: InfoPage;
   NPCInfo: InfoPage;

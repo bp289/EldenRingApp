@@ -9,8 +9,11 @@ import {
   WeaponDetailsQueryVariables,
   WeaponDetailsQuery,
 } from '../../types/graphql';
+import {weapons} from '../../styles/weaponStyle';
 
-type Props = NativeStackScreenProps<HomeStackParams, 'BossInfo'>;
+import {infoText} from '../../styles/Text';
+import LinearGradient from 'react-native-linear-gradient';
+type Props = NativeStackScreenProps<HomeStackParams, 'WeaponInfo'>;
 
 export default function BossInfo({navigation, route}: Props): JSX.Element {
   const {id, name, image} = route.params;
@@ -35,50 +38,89 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
 
   return (
     <ScrollView style={styles.container}>
-      <View>
-        <Text style={styles.header}>{name}</Text>
-        <Image
-          style={styles.thumbnail}
-          source={{
-            uri: image,
-          }}></Image>
+      <LinearGradient colors={['black', '#182120']} style={styles.card}>
+        <Text style={text.header}>{name}</Text>
+        <View style={styles.category}>
+          <Text style={text.subHeading}>({entityInfo?.category})</Text>
+        </View>
+      </LinearGradient>
+      <Image
+        style={styles.thumbnail}
+        source={{
+          uri: image,
+        }}
+      />
+      <View style={styles.divider}></View>
+      <Text style={text.main}>{entityInfo?.description}</Text>
+      <View style={styles.titleContainer}>
+        <View style={styles.titleLine} />
+        <Text style={text.subHeading}>Stats</Text>
+        <View style={styles.titleLine} />
       </View>
-      <Text style={styles.header}>{entityInfo?.description}</Text>
-      <Text style={styles.header}>Damage</Text>
 
-      <Text style={styles.header}>Category:</Text>
-      <Text style={styles.header}>{entityInfo?.category}</Text>
-      <Text style={styles.header}>Weight:</Text>
-      <Text style={styles.header}>{entityInfo?.weight}</Text>
-      <Text style={styles.header}>Attributes</Text>
-      <Text style={styles.header}>
-        {entityInfo.attack.map(attribute => {
-          return (
-            <Text>
-              {attribute.name}: {attribute.amount}
-            </Text>
-          );
-        })}
-      </Text>
+      <View style={styles.stats}>
+        <View style={styles.statsInner}>
+          <View style={styles.left}>
+            <Text style={text.subHeading2}>Attack</Text>
+            {entityInfo!.attack!.map(attribute => {
+              return (
+                <Text style={text.list}>
+                  {attribute!.name}: {attribute!.amount}
+                </Text>
+              );
+            })}
+          </View>
+          <View>
+            <Text style={text.subHeading2}>Defence</Text>
+            {entityInfo!.defence!.map(attribute => {
+              return (
+                <Text style={text.list}>
+                  {attribute!.name}: {attribute!.amount}
+                </Text>
+              );
+            })}
+          </View>
+        </View>
+        <View style={styles.statsInner}>
+          <View style={styles.left}>
+            <Text style={text.subHeading2}>Scaling </Text>
+            {entityInfo!.scalesWith!.map(attribute => {
+              return (
+                <Text style={text.list}>
+                  {attribute!.name}: {attribute!.scaling}
+                </Text>
+              );
+            })}
+          </View>
+          <View>
+            <Text style={text.subHeading2}>Category</Text>
+            <Text style={text.list}>{entityInfo?.category}</Text>
+          </View>
+        </View>
+      </View>
+
+      <View style={styles.divider}></View>
+
+      <View style={styles.stats}>
+        <View style={styles.statsInner}>
+          <Text style={text.subHeading2}>Requirements: </Text>
+          {entityInfo!.requiredAttributes!.map(attribute => {
+            return (
+              <Text style={text.list}>
+                {attribute!.name}: {attribute!.amount}
+              </Text>
+            );
+          })}
+        </View>
+        <View style={styles.statsInner}>
+          <Text style={text.subHeading2}>Weight: </Text>
+          <Text style={text.list}> {entityInfo?.weight}</Text>
+        </View>
+      </View>
     </ScrollView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#102C2A',
-  },
-  thumbnail: {
-    height: 200,
-    flex: 1,
-    justifyContent: 'center',
-    resizeMode: 'cover',
-  },
-  header: {
-    fontFamily: 'Raleway',
-    fontSize: 20,
-    color: '#F9DF99',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-  },
-});
+const styles = StyleSheet.create(weapons);
+
+const text = StyleSheet.create(infoText);

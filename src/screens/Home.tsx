@@ -17,7 +17,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import BossInfo from '../components/Details/BossInfo';
 import WeaponInfo from '../components/Details/WeaponInfo';
-
+import CreaturesInfo from '../components/Details/CreaturesInfo';
 //Pages
 import Weapons from '../components/Lists/Weapons';
 import Bosses from '../components/Lists/Bosses';
@@ -100,6 +100,8 @@ export default function Home(): JSX.Element {
       <HomeStack.Screen name="Creatures" component={Creatures} />
       <HomeStack.Screen name="Items" component={Items} />
       <HomeStack.Screen name="BossInfo" component={BossInfo} />
+      <HomeStack.Screen name="WeaponInfo" component={WeaponInfo} />
+      <HomeStack.Screen name="CreaturesInfo" component={CreaturesInfo} />
     </HomeStack.Navigator>
   );
 }

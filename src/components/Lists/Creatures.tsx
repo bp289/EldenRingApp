@@ -16,7 +16,7 @@ import type {HomeStackParams} from '../../types/Pages';
 import {Spinner} from '../Spinner';
 import {CreaturesQuery, CreaturesQueryVariables} from '../../types/graphql';
 import {GET_CREATURES} from '../../GraphQL/Creatures';
-import {sortData, section, entityInfo} from '../../utils/sortdata';
+import {sortData, Section, SectionItem} from '../../utils/sortdata';
 
 type Props = NativeStackScreenProps<HomeStackParams, 'Creatures'>;
 
@@ -32,8 +32,8 @@ export default function Creatures({navigation}: Props): JSX.Element {
 
   const sections = useMemo(() => {
     return creature
-      ? sortData(creature as Array<entityInfo>)
-      : ([] as Array<section>);
+      ? sortData(creature as Array<SectionItem>)
+      : ([] as Array<Section>);
   }, [creature]);
 
   if (loading) {
@@ -43,18 +43,16 @@ export default function Creatures({navigation}: Props): JSX.Element {
     return <Text>`Error! ${error.message}`</Text>;
   }
 
-  console.log(data);
-
   return (
     <SectionList
       sections={sections}
       renderItem={({item}) => (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('CreatureInfo', {
+            navigation.navigate('CreaturesInfo', {
               name: item!.name,
               id: item!.id,
-              image: item!.id,
+              image: item!.image,
             });
           }}>
           {item!.image && (

@@ -30,13 +30,20 @@ function App(): JSX.Element {
         <Tab.Navigator
           screenOptions={{
             headerShown: false,
+            tabBarStyle: {
+              backgroundColor: 'black',
+            },
+            tabBarActiveTintColor: 'yellow',
+            tabBarInactiveTintColor: 'green',
           }}
           initialRouteName="Home">
           <Tab.Screen name="Search" component={Search} />
           <Tab.Screen
             name="Home"
             component={Home}
-            options={{title: 'Browse'}}
+            options={{
+              title: 'Browse',
+            }}
           />
           <Tab.Screen
             name="BookMarks"

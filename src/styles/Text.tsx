@@ -48,3 +48,57 @@ export const allText = {
     textAlign: 'center',
   },
 };
+
+export const infoText: any = {
+  header: {
+    fontFamily: 'Raleway',
+    fontSize: 45,
+    color: '#F9DF99',
+    fontWeight: '500',
+    marginRight: 'auto',
+    marginLeft: 20,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  subHeading: {
+    fontFamily: 'Raleway',
+    fontSize: 25,
+    color: '#F9DF99',
+    fontWeight: '500',
+  },
+  subHeading2: {
+    fontFamily: 'Raleway',
+    fontSize: 20,
+    marginLeft: 15,
+    color: '#F9DF99',
+    fontWeight: '500',
+  },
+  main: {
+    fontFamily: 'Raleway',
+    fontSize: 20,
+    color: '#F9DF99',
+    fontWeight: '300',
+    marginRight: 30,
+    marginLeft: 20,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  locationText: {
+    fontFamily: 'Raleway',
+    fontSize: 20,
+    color: '#F9DF99',
+    fontWeight: '300',
+    marginRight: 5,
+    marginBottom: 5,
+    marginTop: 20,
+  },
+  list: {
+    fontFamily: 'Raleway',
+    fontSize: 20,
+    color: '#F9DF99',
+    fontWeight: '300',
+    marginRight: 30,
+    marginLeft: 20,
+    marginTop: 5,
+  },
+};

@@ -18,7 +18,7 @@ import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import type {HomeStackParams} from '../../types/pages';
 import {GET_BOSS_DETAILS} from '../../GraphQL/Bosses';
 
-import {creatures} from '../../styles/creatureStyle';
+import {creaturesInfo} from '../../styles/creatureStyle';
 
 import {infoText} from '../../styles/Text';
 
@@ -102,5 +102,5 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
   // }
 }
 
-const styles = StyleSheet.create(creatures);
+const styles = StyleSheet.create(creaturesInfo);
 const text = StyleSheet.create(infoText);

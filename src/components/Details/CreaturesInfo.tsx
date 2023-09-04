@@ -19,7 +19,7 @@ import {
 } from '../../types/graphql';
 
 import LocationImage from '../Image';
-import {creatures} from '../../styles/creatureStyle';
+import {creaturesInfo} from '../../styles/creatureStyle';
 import {infoText} from '../../styles/Text';
 type Props = NativeStackScreenProps<HomeStackParams, 'CreaturesInfo'>;
 
@@ -90,6 +90,6 @@ export default function CreatureInfo({navigation, route}: Props): JSX.Element {
   );
 }
 
-const styles = StyleSheet.create(creatures);
+const styles = StyleSheet.create(creaturesInfo);
 
 const text = StyleSheet.create(infoText);

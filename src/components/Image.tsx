@@ -2,7 +2,7 @@ import React, {useMemo} from 'react';
 
 import {useQuery} from '@apollo/client';
 import {GET_LOCATION_IMAGE_BY_NAME} from '../GraphQL/Locations';
-import {creatures} from '../styles/creatureStyle';
+import {creaturesInfo} from '../styles/creatureStyle';
 import {
   LocationImageByNameQuery,
   LocationImageByNameQueryVariables,
@@ -89,6 +89,6 @@ export default function LocationImage({
   );
 }
 
-const styles = StyleSheet.create(creatures);
+const styles = StyleSheet.create(creaturesInfo);
 
 const text = StyleSheet.create(infoText);

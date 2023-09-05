@@ -91,7 +91,7 @@ export default function Locations({navigation}: Props): JSX.Element {
             navigation.navigate('LocationInfo', {
               name: item!.name!,
               id: item!.id,
-              image: item!.id,
+              image: item!.image!,
             });
           }}>
           {item?.image && (

@@ -18,6 +18,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import BossInfo from '../components/Details/BossInfo';
 import WeaponInfo from '../components/Details/WeaponInfo';
 import CreaturesInfo from '../components/Details/CreaturesInfo';
+import LocationInfo from '../components/Details/LocationInfo';
 //Pages
 import Weapons from '../components/Lists/Weapons';
 import Bosses from '../components/Lists/Bosses';
@@ -49,7 +50,8 @@ const categories = [
   // 'Sorcery',
   'Locations',
   // 'Ashes Of War',
-];
+] as const;
+
 type Props = NativeStackScreenProps<HomeStackParams, 'MainPage'>;
 
 const HomeStack = createNativeStackNavigator<HomeStackParams>();
@@ -76,7 +78,6 @@ const MainPage = ({navigation}: Props): JSX.Element => {
             onPress={() => navigation.navigate(item)}>
             <View>
               <Text style={styles.text}>{item}</Text>
-              <Text style={styles.text}>(Info): </Text>
             </View>
             <View>
               <Image style={styles.thumbnail} source={images[item]} />
@@ -88,20 +89,118 @@ const MainPage = ({navigation}: Props): JSX.Element => {
   );
 };
 
+const headerStyle = {
+  backgroundColor: '#050300',
+};
+const headerTintColor = '#F2D16C';
+const headerTitleStyle = {
+  fontFamily: 'Raleway',
+  fontSize: 21,
+};
+
 export default function Home(): JSX.Element {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="MainPage" component={MainPage} />
-      <HomeStack.Screen name="Bosses" component={Bosses} />
-      <HomeStack.Screen name="Sorcery" component={Sorcery} />
-      <HomeStack.Screen name="Locations" component={Locations} />
-      <HomeStack.Screen name="AshesOfWar" component={AshesOfWar} />
-      <HomeStack.Screen name="Weapons" component={Weapons} />
-      <HomeStack.Screen name="Creatures" component={Creatures} />
-      <HomeStack.Screen name="Items" component={Items} />
-      <HomeStack.Screen name="BossInfo" component={BossInfo} />
-      <HomeStack.Screen name="WeaponInfo" component={WeaponInfo} />
-      <HomeStack.Screen name="CreaturesInfo" component={CreaturesInfo} />
+      <HomeStack.Screen
+        name="MainPage"
+        component={MainPage}
+        options={{
+          title: 'Browse',
+          headerStyle,
+          headerTintColor,
+          headerTitleStyle,
+        }}
+      />
+      <HomeStack.Screen
+        name="Bosses"
+        component={Bosses}
+        options={{
+          headerStyle,
+          headerTintColor,
+          headerTitleStyle,
+        }}
+      />
+      <HomeStack.Screen
+        name="Sorcery"
+        component={Sorcery}
+        options={{
+          headerStyle,
+          headerTintColor,
+          headerTitleStyle,
+        }}
+      />
+      <HomeStack.Screen
+        name="Locations"
+        component={Locations}
+        options={{
+          headerStyle,
+          headerTintColor,
+          headerTitleStyle,
+        }}
+      />
+      <HomeStack.Screen
+        name="AshesOfWar"
+        component={AshesOfWar}
+        options={{
+          headerStyle,
+          headerTintColor,
+          headerTitleStyle,
+        }}
+      />
+      <HomeStack.Screen
+        name="Weapons"
+        component={Weapons}
+        options={{
+          headerStyle,
+          headerTintColor,
+          headerTitleStyle,
+        }}
+      />
+      <HomeStack.Screen
+        name="Creatures"
+        component={Creatures}
+        options={{
+          headerStyle,
+          headerTintColor,
+          headerTitleStyle,
+        }}
+      />
+      <HomeStack.Screen
+        name="LocationInfo"
+        component={LocationInfo}
+        options={{
+          headerStyle,
+          headerTintColor,
+          headerTitleStyle,
+        }}
+      />
+      <HomeStack.Screen
+        name="BossInfo"
+        component={BossInfo}
+        options={{
+          headerStyle,
+          headerTintColor,
+          headerTitleStyle,
+        }}
+      />
+      <HomeStack.Screen
+        name="WeaponInfo"
+        component={WeaponInfo}
+        options={{
+          headerStyle,
+          headerTintColor,
+          headerTitleStyle,
+        }}
+      />
+      <HomeStack.Screen
+        name="CreaturesInfo"
+        component={CreaturesInfo}
+        options={{
+          headerStyle,
+          headerTintColor,
+          headerTitleStyle,
+        }}
+      />
     </HomeStack.Navigator>
   );
 }
@@ -140,9 +239,10 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     color: '#F9DF99',
-    fontFamily: 'Raleway',
-    fontSize: 45,
+    fontFamily: 'Cormorant Garamond',
+    fontSize: 55,
     fontWeight: 'bold',
+    marginTop: 70,
   },
   linearGradient: {
     flex: 1,

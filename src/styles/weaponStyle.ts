@@ -1,4 +1,6 @@
-export const weapons: any = {
+import {StyleSheet} from 'react-native';
+
+export const weapons = StyleSheet.create({
   container: {
     backgroundColor: '#182120',
   },
@@ -53,4 +55,4 @@ export const weapons: any = {
     height: 23,
     width: 23,
   },
-};
+});

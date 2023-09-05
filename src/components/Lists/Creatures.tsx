@@ -95,7 +95,9 @@ export default function Creatures({navigation}: Props): JSX.Element {
             )}
           </>
         )}
-        renderSectionHeader={({section: {title}}) => <Text>{title}</Text>}
+        renderSectionHeader={({section: {title}}) => (
+          <Text style={{color: 'white'}}>{title}</Text>
+        )}
         keyExtractor={item => item.id}
       />
     </View>

@@ -15,7 +15,7 @@ import {infoText} from '../../styles/Text';
 import LinearGradient from 'react-native-linear-gradient';
 type Props = NativeStackScreenProps<HomeStackParams, 'WeaponInfo'>;
 
-export default function BossInfo({navigation, route}: Props): JSX.Element {
+export default function BossInfo({route}: Props): JSX.Element {
   const {id, name, image} = route.params;
 
   const {loading, error, data} = useQuery<
@@ -52,6 +52,7 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
       />
       <View style={styles.divider}></View>
       <Text style={text.main}>{entityInfo?.description}</Text>
+
       <View style={styles.titleContainer}>
         <View style={styles.titleLine} />
         <Text style={text.subHeading}>Stats</Text>

@@ -1,0 +1,48 @@
+﻿appId: org.reactjs.native.example.EldenRingApp
+---
+- launchApp
+- tapOn: 'Weapons'
+- assertVisible: 'Weapons '
+- assertVisible: 'Weapon Type : Axe'
+- tapOn: 'Weapons'
+- assertVisible: 'Weapons '
+- assertVisible: 'Weapon Type : Axe'
+- scrollUntilVisible:
+    element:
+      text: 'Sacrificial Axe'
+    direction: 'DOWN'
+    visibilityPercentage: 100
+- assertVisible: 'Sacrificial Axe'
+- scrollUntilVisible:
+    element:
+      text: 'Weapon Type : Axe'
+    direction: 'UP'
+    visibilityPercentage: 100
+- tapOn: 'Weapon Type : Axe'
+- tapOn: 'Bow'
+- assertVisible: 'Longbow'
+- tapOn: 'Longbow'
+- assertVisible: 'Longbow made to fire arrows over great distances. Compared to a shortbow, arrows fired reach further and deal more damage. To use a bow, arrows must also be equipped. '
+- scrollUntilVisible:
+    element:
+      text: 'Attack'
+    direction: 'Down'
+    visibilityPercentage: 100
+- assertVisible:
+    "Attack Phy: 80 Mag: 0 Fire: 0 Ligt: 0 Holy: 0 Crit: 100 Rng: 50\
+    \ Defence Phy: 0 Mag: 0 Fire: 0 Ligt: 0 Holy: 0 Boost: 0"
+- scrollUntilVisible:
+    element:
+      text: 'Scaling '
+    direction: 'DOWN'
+    visibilityPercentage: 100
+- assertVisible: 'Scaling  Str: E Dex: D Category Bow'
+- scrollUntilVisible:
+    element:
+      text: 'Weight: '
+    direction: 'DOWN'
+    visibilityPercentage: 100
+- assertVisible: 'Weight:   4'
+- assertVisible: 'Requirements:  Str: 9 Dex: 14'
+- tapOn: 'Weapons'
+- tapOn: 'Browse'

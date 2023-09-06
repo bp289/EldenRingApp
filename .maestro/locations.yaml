@@ -1,0 +1,24 @@
+﻿appId: org.reactjs.native.example.EldenRingApp
+---
+- launchApp
+- tapOn: 'Locations'
+
+- scrollUntilVisible:
+    element:
+      text: 'Limgrave Tunnels'
+    direction: 'DOWN'
+    visibilityPercentage: 100
+- tapOn: 'Limgrave Tunnels'
+- assertVisible: 'Limgrave Tunnels'
+- assertVisible: "Limgrave Tunnels are a mine harvested for Glimstone. Its zealous miners don't dare venture into its hidden chambers, for fear of the hoarder Troll within "
+
+- scrollUntilVisible:
+    element:
+      text: 'Region - Limgrave'
+    direction: 'DOWN'
+    visibilityPercentage: 100
+
+- assertVisible: 'Location'
+- assertVisible: 'Region - Limgrave'
+- tapOn: 'Locations'
+- tapOn: 'Browse'

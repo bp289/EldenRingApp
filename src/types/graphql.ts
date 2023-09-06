@@ -688,6 +688,7 @@ export type LocationsQuery = {
     id: string;
     name?: string | null;
     image?: string | null;
+    region?: string | null;
   } | null> | null;
 };
 
@@ -739,6 +740,32 @@ export type NpcDetailsQuery = {
     location?: string | null;
     role?: string | null;
   };
+};
+
+export type SearchDataQueryVariables = Exact<{[key: string]: never}>;
+
+export type SearchDataQuery = {
+  __typename?: 'Query';
+  creature?: Array<{
+    __typename: 'Creature';
+    id: string;
+    name?: string | null;
+  } | null> | null;
+  location?: Array<{
+    __typename: 'Location';
+    id: string;
+    name?: string | null;
+  } | null> | null;
+  boss?: Array<{
+    __typename: 'Boss';
+    id: string;
+    name?: string | null;
+  } | null> | null;
+  weapon?: Array<{
+    __typename: 'Weapon';
+    id: string;
+    name?: string | null;
+  } | null> | null;
 };
 
 export type ShieldsQueryVariables = Exact<{[key: string]: never}>;

@@ -1,0 +1,18 @@
+﻿appId: org.reactjs.native.example.EldenRingApp
+---
+- launchApp
+- tapOn: 'Creatures'
+- assertVisible: 'Creatures '
+- tapOn: 'Creatures'
+- tapOn: 'Arcane Sphere Of Faces'
+- assertVisible: 'Arcane Sphere Of Faces'
+- assertVisible: "Safeguard of the Witchbane Ruins' basement cellar. Mysteriously rare and highly unconventional."
+- scrollUntilVisible:
+    element:
+      text: 'Drops '
+    direction: 'DOWN'
+    visibilityPercentage: 100
+- assertVisible: 'Witchbane Ruins '
+- assertVisible: '1. None'
+- tapOn: 'Creatures'
+- tapOn: 'Browse'

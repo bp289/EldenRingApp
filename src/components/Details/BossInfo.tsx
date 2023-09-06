@@ -82,11 +82,11 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
       </View>
       <View style={styles.stats}>
         <View>
-          <Text style={text.subHeading2}> Drops</Text>
+          <Text style={text.subHeading2}> Drops </Text>
           {drops.map((drop, index) => {
             const number = index + 1;
             return (
-              <Text key={`${drop}-${index}`} style={styles.list}>
+              <Text key={`${drop}-${index}`} style={text.list}>
                 {number}. {drop}
               </Text>
             );

@@ -35,3 +35,8 @@ export type HomeStackParams = {
   TalismanInfo: InfoPage;
   ArmorInfo: InfoPage;
 };
+
+export interface SearchType {
+  name: string;
+  id: string;
+}

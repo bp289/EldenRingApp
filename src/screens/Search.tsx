@@ -20,7 +20,7 @@ import {SearchDataQuery, SearchDataQueryVariables} from '../types/graphql';
 import {dropDown} from '../styles/dropDown';
 import {allText} from '../styles/Text';
 
-function removeSAndLowerCase(input: string): string {
+const removeSAndLowerCase = (input: string): string => {
   if (input.endsWith('es')) {
     return input.slice(0, -2).toLowerCase();
   } else if (input.endsWith('s')) {
@@ -28,12 +28,20 @@ function removeSAndLowerCase(input: string): string {
   } else {
     return input.toLowerCase();
   }
-}
+};
 
-export default function Search(): JSX.Element {
+const capitalizeFirstLetter = (inputString: string): string => {
+  return inputString.length
+    ? inputString.charAt(0).toUpperCase() + inputString.slice(1)
+    : inputString;
+};
+
+export default function Search({navigation}): JSX.Element {
   const [search, setSearch] = useState('');
   const [searchCategory, setSearchCategory] = useState('Bosses');
-  const [results, setResults] = useState([{name: '', id: ''}]);
+  const [results, setResults] = useState([
+    {name: '', id: '', image: '', __typename: ''},
+  ]);
 
   const {loading, error, data} = useQuery<
     SearchDataQuery,
@@ -105,7 +113,18 @@ export default function Search(): JSX.Element {
           }
           renderItem={({item}) => (
             <>
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() => {
+                  console.log(`${capitalizeFirstLetter(item.__typename)}Info`);
+                  navigation.navigate('Home', {
+                    screen: `${capitalizeFirstLetter(item.__typename)}Info`,
+                    params: {
+                      id: item.id,
+                      name: item.name,
+                      image: item.image,
+                    },
+                  });
+                }}>
                 <View>
                   <Text style={text.text}>{item.name}</Text>
                 </View>

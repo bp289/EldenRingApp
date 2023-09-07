@@ -39,4 +39,6 @@ export type HomeStackParams = {
 export interface SearchType {
   name: string;
   id: string;
+  image: string;
+  __typename: string;
 }

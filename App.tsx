@@ -7,7 +7,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Search from './src/screens/Search';
 import Home from './src/screens/Home';
 import BookMarks from './src/screens/Bookmarks';
-import {StyleSheet} from 'react-native';
 
 const API_KEY = 'https://eldenring.fanapis.com/api/graphql';
 

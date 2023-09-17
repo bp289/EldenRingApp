@@ -55,8 +55,9 @@ export default function Search({navigation}): JSX.Element {
       category as keyof SearchDataQuery
     ] as SearchType[];
 
+    console.log(dataToSearch);
     setResults(
-      dataToSearch!.filter(item => {
+      dataToSearch?.filter(item => {
         if (item.name.toLowerCase().includes(search.toLowerCase())) {
           return data;
         }
@@ -103,12 +104,9 @@ export default function Search({navigation}): JSX.Element {
                 dropdownIconPosition={'left'}
               />
               <TextInput style={styles.input} onChangeText={setSearch} />
-              <Button
-                onPress={() => handleSearch()}
-                title="Search"
-                color="#841584"
-                accessibilityLabel="Learn more about this purple button"
-              />
+              <TouchableOpacity onPress={() => handleSearch()}>
+                <Text style={{color: 'white'}}>Search</Text>
+              </TouchableOpacity>
             </>
           }
           renderItem={({item}) => (

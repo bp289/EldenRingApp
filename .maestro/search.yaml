@@ -1,0 +1,24 @@
+﻿appID: org.reactjs.native.example.EldenRingApp
+---
+- launchApp
+- tapOn: 'Search, tab, 1 of 3'
+- inputText: 'Adan,'
+- tapOn: 'Search'
+- assertVisible: 'Adan, Thief Of Fire'
+- tapOn: 'Adan, Thief Of Fire'
+- assertVisible:
+    "An evergaol prisoner and former battle mage, Adan wields a spiked\
+    \ flail and uses stolen knowledge of fire magic to great effect."
+
+- scrollUntilVisible:
+    element:
+      text: ' Drops '
+    direction: 'DOWN'
+    visibilityPercentage: 100
+
+- tapOn: 'Location'
+- assertVisible: "Malefactor's Evergaol "
+- assertVisible: 'Region - Liurnia of the Lakes'
+- assertVisible: 'Stats & Details '
+- assertVisible: 'Health Points 2200'
+- assertVisible: ' Drops  1. 3.800 Runes 2. Flame of the Fell God'

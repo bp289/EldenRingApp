@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import {ScrollView, Text, Image, StyleSheet, View} from 'react-native';
 import {Spinner} from '../Spinner';
 import {useQuery} from '@apollo/client';
@@ -9,10 +9,21 @@ import {
   WeaponDetailsQueryVariables,
   WeaponDetailsQuery,
 } from '../../types/graphql';
-import {weapons} from '../../styles/weaponStyle';
 
-import {infoText} from '../../styles/Text';
 import LinearGradient from 'react-native-linear-gradient';
+
+import {
+  Description,
+  SubHeading,
+  AttributeStat,
+  ScalingStat,
+  StatRow,
+  Stats,
+  Divider,
+  RowItem,
+  FillRowAttributeStat,
+  RowItemFill,
+} from './Generic/Info';
 type Props = NativeStackScreenProps<HomeStackParams, 'WeaponInfo'>;
 
 export default function BossInfo({route}: Props): JSX.Element {
@@ -22,12 +33,6 @@ export default function BossInfo({route}: Props): JSX.Element {
     WeaponDetailsQuery,
     WeaponDetailsQueryVariables
   >(GET_WEAPON_DETAILS(id));
-
-  const entityInfo = useMemo(() => {
-    if (data) {
-      return data.getWeapon;
-    }
-  }, [data]);
 
   if (loading) {
     return <Spinner />;
@@ -41,7 +46,7 @@ export default function BossInfo({route}: Props): JSX.Element {
       <LinearGradient colors={['black', '#182120']} style={styles.card}>
         <Text style={text.header}>{name}</Text>
         <View style={styles.category}>
-          <Text style={text.subHeading}>({entityInfo?.category})</Text>
+          <Text style={text.subHeading}>({data?.getWeapon?.category})</Text>
         </View>
       </LinearGradient>
       <Image
@@ -50,78 +55,71 @@ export default function BossInfo({route}: Props): JSX.Element {
           uri: image,
         }}
       />
-      <View style={styles.divider}></View>
-      <Text style={text.main}>{entityInfo?.description}</Text>
+      <Divider />
+      <Description textData={data?.getWeapon?.description!} />
+      <SubHeading textData="Stats" />
 
-      <View style={styles.titleContainer}>
-        <View style={styles.titleLine} />
-        <Text style={text.subHeading}>Stats</Text>
-        <View style={styles.titleLine} />
-      </View>
+      <Stats>
+        <StatRow>
+          <AttributeStat title="Attack" statData={data?.getWeapon!.attack!} />
+          <AttributeStat title="Defense" statData={data?.getWeapon!.defence!} />
+        </StatRow>
+        <StatRow>
+          <ScalingStat
+            title="Scaling"
+            statData={data?.getWeapon!.scalesWith!}
+          />
+          <RowItem title="Category" description={data?.getWeapon!.category!} />
+        </StatRow>
+      </Stats>
 
-      <View style={styles.stats}>
-        <View style={styles.statsInner}>
-          <View style={styles.left}>
-            <Text style={text.subHeading2}>Attack</Text>
-            {entityInfo!.attack!.map(attribute => {
-              return (
-                <Text style={text.list}>
-                  {attribute!.name}: {attribute!.amount}
-                </Text>
-              );
-            })}
-          </View>
-          <View>
-            <Text style={text.subHeading2}>Defence</Text>
-            {entityInfo!.defence!.map(attribute => {
-              return (
-                <Text style={text.list}>
-                  {attribute!.name}: {attribute!.amount}
-                </Text>
-              );
-            })}
-          </View>
-        </View>
-        <View style={styles.statsInner}>
-          <View style={styles.left}>
-            <Text style={text.subHeading2}>Scaling </Text>
-            {entityInfo!.scalesWith!.map(attribute => {
-              return (
-                <Text style={text.list}>
-                  {attribute!.name}: {attribute!.scaling}
-                </Text>
-              );
-            })}
-          </View>
-          <View>
-            <Text style={text.subHeading2}>Category</Text>
-            <Text style={text.list}>{entityInfo?.category}</Text>
-          </View>
-        </View>
-      </View>
+      <Divider />
 
-      <View style={styles.divider}></View>
-
-      <View style={styles.stats}>
-        <View style={styles.statsInner}>
-          <Text style={text.subHeading2}>Requirements: </Text>
-          {entityInfo!.requiredAttributes!.map(attribute => {
-            return (
-              <Text style={text.list}>
-                {attribute!.name}: {attribute!.amount}
-              </Text>
-            );
-          })}
-        </View>
-        <View style={styles.statsInner}>
-          <Text style={text.subHeading2}>Weight: </Text>
-          <Text style={text.list}> {entityInfo?.weight}</Text>
-        </View>
-      </View>
+      <Stats>
+        <FillRowAttributeStat
+          title="Requirements"
+          statData={data?.getWeapon!.requiredAttributes!}
+        />
+        <RowItemFill title="Weight" description={data?.getWeapon!.weight!} />
+      </Stats>
     </ScrollView>
   );
 }
 
-const styles = StyleSheet.create(weapons);
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#182120',
+  },
+  category: {
+    alignItems: 'flex-end',
+    marginRight: 30,
+  },
+  card: {
+    width: 'auto',
+  },
+  thumbnail: {
+    height: 250,
+    width: 250,
+    borderRadius: 50,
+    marginLeft: 50,
+  },
+});
 
-const text = StyleSheet.create(infoText);
+const text = StyleSheet.create({
+  header: {
+    fontFamily: 'Raleway',
+    fontSize: 45,
+    color: '#F9DF99',
+    fontWeight: '500',
+    marginRight: 'auto',
+    marginLeft: 20,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  subHeading: {
+    fontFamily: 'Raleway',
+    fontSize: 25,
+    color: '#F9DF99',
+    fontWeight: '500',
+  },
+});

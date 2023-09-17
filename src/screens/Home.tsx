@@ -23,7 +23,7 @@ import LocationInfo from '../components/Details/LocationInfo';
 //Pages
 import Weapons from '../components/Lists/Weapons';
 import Bosses from '../components/Lists/Bosses';
-import Armors from '../components/Lists/Items';
+import Armors from '../components/Lists/Armors';
 import Creatures from '../components/Lists/Creatures';
 import Items from '../components/Lists/Items';
 import Sorcery from '../components/Lists/Sorcery';
@@ -45,7 +45,7 @@ const images: image = {
 const categories = [
   'Bosses',
   'Weapons',
-  // 'Armors',
+  'Armors',
   // 'Items',
   'Creatures',
   // 'Sorcery',
@@ -124,6 +124,15 @@ export default function Home(): JSX.Element {
       <HomeStack.Screen
         name="Sorcery"
         component={Sorcery}
+        options={{
+          headerStyle,
+          headerTintColor,
+          headerTitleStyle,
+        }}
+      />
+      <HomeStack.Screen
+        name="Armors"
+        component={Armors}
         options={{
           headerStyle,
           headerTintColor,

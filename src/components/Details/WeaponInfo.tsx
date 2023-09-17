@@ -23,7 +23,7 @@ import {
   RowItem,
   FillRowAttributeStat,
   RowItemFill,
-} from './Generic/Info';
+} from '../Generic/Info';
 type Props = NativeStackScreenProps<HomeStackParams, 'WeaponInfo'>;
 
 export default function BossInfo({route}: Props): JSX.Element {

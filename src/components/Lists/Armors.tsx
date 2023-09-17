@@ -14,17 +14,32 @@ import type {HomeStackParams} from '../../types/Pages';
 
 import {Spinner} from '../Spinner';
 import {ArmorsQuery, ArmorsQueryVariables} from '../../types/graphql';
+import {ListItemType, categories} from '../../types/pages';
 
+import groupCategories from '../../utils/groupCategories';
 type Props = NativeStackScreenProps<HomeStackParams, 'Armors'>;
 
 export default function Armors({navigation}: Props): JSX.Element {
+  const [armorCategory, setArmorCategory] = useState();
   const {loading, error, data} = useQuery<ArmorsQuery, ArmorsQueryVariables>(
     GET_ARMORS,
   );
 
-  const {armor} = useMemo(() => {
-    return data ? data : {armor: undefined};
+  const groupedArmors = useMemo(() => {
+    if (data) {
+      return groupCategories(data?.armor as Array<ListItemType>);
+    } else {
+      return {} as categories;
+    }
   }, [data]);
+
+  const categories = useMemo(() => {
+    return Object.keys(groupedArmors);
+  }, [groupedArmors]);
+
+  const currentGroup = useMemo(() => {
+    return groupedArmors[armorCategory];
+  }, [groupedArmors, armorCategory]);
 
   if (loading) {
     return <Spinner />;
@@ -36,7 +51,7 @@ export default function Armors({navigation}: Props): JSX.Element {
   return (
     <FlatList
       style={styles.container}
-      data={armor}
+      data={currentGroup}
       renderItem={({item}) => (
         <TouchableOpacity
           onPress={() => {

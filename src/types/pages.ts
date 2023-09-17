@@ -4,6 +4,17 @@ interface InfoPage {
   image: string;
 }
 
+export interface ListItemType {
+  __typename: string;
+  category: string;
+  id: string;
+  image: string;
+  name: string;
+}
+export interface categories {
+  [category: string]: ListItemType[];
+}
+
 export type HomeStackParams = {
   MainPage: undefined;
   Armors: undefined;

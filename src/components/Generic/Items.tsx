@@ -10,6 +10,7 @@ interface DropDownProps {
   title: string;
   categories: string[];
   setCat: React.Dispatch<React.SetStateAction<string>>;
+  defaultText: string;
 }
 
 interface ItemCardProps {
@@ -21,6 +22,7 @@ export function DropDown({
   title,
   categories,
   setCat,
+  defaultText,
 }: DropDownProps): JSX.Element {
   return (
     <LinearGradient
@@ -39,7 +41,7 @@ export function DropDown({
         }}
         buttonStyle={style.main}
         buttonTextStyle={text.dropDown}
-        defaultButtonText={'Axe'}
+        defaultButtonText={defaultText}
         buttonTextAfterSelection={selectedItem => {
           return selectedItem;
         }}

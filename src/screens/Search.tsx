@@ -6,19 +6,22 @@ import {
   TextInput,
   StyleSheet,
   Image,
-  Button,
   FlatList,
 } from 'react-native';
 import {useQuery} from '@apollo/client';
-import SelectDropdown from 'react-native-select-dropdown';
 import {Spinner} from '../components/Spinner';
 import {SEARCH_DATA} from '../GraphQL/Search';
 import {SearchType} from '../types/pages';
 const categories = ['Locations', 'Bosses', 'Weapons', 'Creatures'];
 
 import {SearchDataQuery, SearchDataQueryVariables} from '../types/graphql';
-import {dropDown} from '../styles/dropDown';
 import {allText} from '../styles/Text';
+
+import {TabParams} from '../../App';
+import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
+import {DropDown} from '../components/Generic/Items';
+
+type Props = BottomTabScreenProps<TabParams, 'Search'>;
 
 const removeSAndLowerCase = (input: string): string => {
   if (input.endsWith('es')) {
@@ -36,7 +39,7 @@ const capitalizeFirstLetter = (inputString: string): string => {
     : inputString;
 };
 
-export default function Search({navigation}): JSX.Element {
+export default function Search({navigation}: Props): JSX.Element {
   const [search, setSearch] = useState('');
   const [searchCategory, setSearchCategory] = useState('Bosses');
   const [results, setResults] = useState([
@@ -78,42 +81,27 @@ export default function Search({navigation}): JSX.Element {
           data={results}
           ListHeaderComponent={
             <>
-              <SelectDropdown
-                buttonStyle={searchMenu.main}
-                buttonTextStyle={text.dropDown}
-                defaultButtonText={'Bosses'}
-                data={categories}
-                onSelect={selectedItem => {
-                  setSearchCategory(selectedItem);
-                }}
-                renderDropdownIcon={isOpened => {
-                  return (
-                    <View>
-                      <Image
-                        style={
-                          isOpened
-                            ? searchMenu.chevronOpen
-                            : searchMenu.chevronClosed
-                        }
-                        source={require('../../assets/images/icons/chevron.png')}
-                      />
-                      <Text style={text.dropDown}>Category</Text>
-                    </View>
-                  );
-                }}
-                dropdownIconPosition={'left'}
+              <View style={styles.headerMargin} />
+              <DropDown
+                title="Search"
+                defaultText="Bosses"
+                setCat={setSearchCategory}
+                categories={categories}
               />
-              <TextInput style={styles.input} onChangeText={setSearch} />
-              <TouchableOpacity onPress={() => handleSearch()}>
-                <Text style={{color: 'white'}}>Search</Text>
-              </TouchableOpacity>
+              <View style={styles.searchInputs}>
+                <TextInput style={styles.input} onChangeText={setSearch} />
+                <TouchableOpacity onPress={() => handleSearch()}>
+                  <View style={styles.searchButtonOuter}>
+                    <Text style={styles.searchButton}>Search</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
             </>
           }
           renderItem={({item}) => (
             <>
               <TouchableOpacity
                 onPress={() => {
-                  console.log(`${capitalizeFirstLetter(item.__typename)}Info`);
                   navigation.navigate('Home', {
                     screen: `${capitalizeFirstLetter(item.__typename)}Info`,
                     params: {
@@ -136,6 +124,7 @@ export default function Search({navigation}): JSX.Element {
 }
 const styles = StyleSheet.create({
   input: {
+    width: '60%',
     height: 40,
     margin: 12,
     borderWidth: 1,
@@ -144,8 +133,29 @@ const styles = StyleSheet.create({
     borderColor: '#59593E',
   },
   backGround: {backgroundColor: 'black', height: '100%'},
+  searchButton: {
+    color: '#F9DF99',
+    fontFamily: 'Raleway',
+  },
+  searchButtonOuter: {
+    width: 100,
+    borderRadius: 5,
+    height: 30,
+    margin: 10,
+    backgroundColor: '#59593E',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  searchInputs: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  headerMargin: {
+    marginTop: 20,
+    height: 50,
+  },
 });
 
 const text = StyleSheet.create(allText as any);
-
-const searchMenu = StyleSheet.create(dropDown as any);

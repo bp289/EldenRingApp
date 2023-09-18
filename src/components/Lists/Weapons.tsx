@@ -83,6 +83,7 @@ export default function Weapons({navigation}: Props): JSX.Element {
             style={styles.titleImageBackground}
             source={require('../../../assets/images/WeaponAlt.webp')}>
             <DropDown
+              defaultText="Axe"
               title="Weapons"
               categories={categories}
               setCat={setWeaponCategory}

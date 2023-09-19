@@ -10,9 +10,9 @@ import {
   ArmorDetailsQueryVariables,
 } from '../../types/graphql';
 
-type Props = NativeStackScreenProps<HomeStackParams, 'BossInfo'>;
+type Props = NativeStackScreenProps<HomeStackParams, 'ArmorInfo'>;
 
-export default function BossInfo({navigation, route}: Props): JSX.Element {
+export default function ArmorInfo({navigation, route}: Props): JSX.Element {
   const {id, name, image} = route.params;
 
   const {loading, error, data} = useQuery<

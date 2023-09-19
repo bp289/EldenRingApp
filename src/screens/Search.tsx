@@ -19,7 +19,7 @@ import {allText} from '../styles/Text';
 
 import {TabParams} from '../../App';
 import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
-import {DropDown} from '../components/Generic/Items';
+import {DropDown} from '../components/Generic/ItemComponents';
 
 type Props = BottomTabScreenProps<TabParams, 'Search'>;
 

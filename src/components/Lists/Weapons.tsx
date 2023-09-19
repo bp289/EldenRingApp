@@ -1,42 +1,22 @@
 import React, {useMemo, useState} from 'react';
-import {StyleSheet, Text, View, FlatList, ImageBackground} from 'react-native';
+import {StyleSheet, Text, FlatList, ImageBackground} from 'react-native';
 
 import {useQuery} from '@apollo/client';
 import {GET_WEAPONS} from '../../GraphQL/Weapons';
 
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import type {HomeStackParams, ListItemType} from '../../types/Pages';
+import type {
+  HomeStackParams,
+  ListItemType,
+  categories,
+} from '../../types/Pages';
 import {Spinner} from '../Spinner';
 import {WeaponsQuery, WeaponsQueryVariables} from '../../types/graphql';
-
-import {DropDown, ItemCard} from '../Generic/Items';
+import {BackDrop, DropDown, ItemCard} from '../Generic/ItemComponents';
+import groupCategories from '../../utils/groupCategories';
 
 type Props = NativeStackScreenProps<HomeStackParams, 'Weapons'>;
 
-interface WeaponItem {
-  __typename: string;
-  category: string;
-  id: string;
-  image: string;
-  name: string;
-}
-
-interface categories {
-  [category: string]: WeaponItem[];
-}
-
-function groupCategories(data: Array<WeaponItem>): categories {
-  const categories: categories = {};
-  data.forEach(entry => {
-    const currentCategory = entry.category;
-    if (!categories[currentCategory]) {
-      categories[currentCategory] = [];
-    }
-    categories[currentCategory].push(entry);
-  });
-
-  return categories;
-}
 export default function Weapons({navigation}: Props): JSX.Element {
   const [weaponCategory, setWeaponCategory] = useState<string>('Axe');
   const {loading, error, data} = useQuery<WeaponsQuery, WeaponsQueryVariables>(
@@ -44,12 +24,12 @@ export default function Weapons({navigation}: Props): JSX.Element {
   );
   const groupedWeapons = useMemo(() => {
     if (data) {
-      return groupCategories(data?.weapon as Array<WeaponItem>);
+      return groupCategories(data?.weapon as Array<ListItemType>);
     } else {
       return {} as categories;
     }
   }, [data]);
-  const categories = useMemo(() => {
+  const allCategories = useMemo(() => {
     return Object.keys(groupedWeapons);
   }, [groupedWeapons]);
 
@@ -73,8 +53,7 @@ export default function Weapons({navigation}: Props): JSX.Element {
 
   return (
     <>
-      <View style={styles.backGround} />
-
+      <BackDrop />
       <FlatList
         style={styles.container}
         data={currentGroup}
@@ -85,7 +64,7 @@ export default function Weapons({navigation}: Props): JSX.Element {
             <DropDown
               defaultText="Axe"
               title="Weapons"
-              categories={categories}
+              categories={allCategories}
               setCat={setWeaponCategory}
             />
           </ImageBackground>
@@ -112,9 +91,6 @@ const styles = StyleSheet.create({
   linearGradient: {
     flex: 1,
     height: 100,
-  },
-  backGround: {
-    backgroundColor: 'transparent',
   },
   titleImageBackground: {
     height: 200,

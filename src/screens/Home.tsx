@@ -19,6 +19,8 @@ import BossInfo from '../components/Details/BossInfo';
 import WeaponInfo from '../components/Details/WeaponInfo';
 import CreaturesInfo from '../components/Details/CreaturesInfo';
 import LocationInfo from '../components/Details/LocationInfo';
+import ItemInfo from '../components/Details/ItemsInfo';
+import ArmorInfo from '../components/Details/ArmorInfo';
 
 //Pages
 import Weapons from '../components/Lists/Weapons';
@@ -46,7 +48,7 @@ const categories = [
   'Bosses',
   'Weapons',
   'Armors',
-  // 'Items',
+  'Items',
   'Creatures',
   // 'Sorcery',
   'Locations',
@@ -133,6 +135,15 @@ export default function Home(): JSX.Element {
       <HomeStack.Screen
         name="Armors"
         component={Armors}
+        options={{
+          headerStyle,
+          headerTintColor,
+          headerTitleStyle,
+        }}
+      />
+      <HomeStack.Screen
+        name="Items"
+        component={Items}
         options={{
           headerStyle,
           headerTintColor,

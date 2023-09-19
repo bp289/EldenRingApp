@@ -83,6 +83,10 @@ export function ItemCard({onNavigation, item}: ItemCardProps): JSX.Element {
   );
 }
 
+export function BackDrop(): JSX.Element {
+  return <View style={style.backGround} />;
+}
+
 const text = StyleSheet.create({
   header: {
     fontFamily: 'Raleway',
@@ -132,6 +136,9 @@ const text = StyleSheet.create({
 });
 
 const style = StyleSheet.create({
+  backGround: {
+    backgroundColor: 'transparent',
+  },
   thumbnail: {
     width: 'auto',
     borderRadius: 5,

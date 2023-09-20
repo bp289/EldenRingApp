@@ -6,10 +6,13 @@ interface InfoPage {
 
 export interface ListItemType {
   __typename: string;
-  category: string;
   id: string;
   image: string;
   name: string;
+}
+
+export interface ListItemTypeWithCategory extends ListItemType {
+  category: string;
 }
 export interface categories {
   [category: string]: ListItemType[];

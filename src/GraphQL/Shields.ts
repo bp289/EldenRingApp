@@ -6,6 +6,7 @@ export const GET_SHIELDS = gql`
       id
       name
       image
+      category
     }
   }
 `;

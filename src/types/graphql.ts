@@ -604,7 +604,7 @@ export type SearchDataQuery = { __typename?: 'Query', creature?: Array<{ __typen
 export type ShieldsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ShieldsQuery = { __typename?: 'Query', shield?: Array<{ __typename?: 'Shield', id: string, name?: string | null, image?: string | null } | null> | null };
+export type ShieldsQuery = { __typename?: 'Query', shield?: Array<{ __typename?: 'Shield', id: string, name?: string | null, image?: string | null, category?: string | null } | null> | null };
 
 export type ShieldDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 

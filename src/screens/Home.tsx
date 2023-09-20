@@ -50,9 +50,10 @@ const categories = [
   'Armors',
   'Items',
   'Creatures',
+  'Shields',
   // 'Sorcery',
   'Locations',
-  // 'Ashes Of War',
+  'AshesOfWar',
 ] as const;
 
 type Props = NativeStackScreenProps<HomeStackParams, 'MainPage'>;

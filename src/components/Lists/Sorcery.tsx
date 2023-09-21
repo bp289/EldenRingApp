@@ -1,16 +1,14 @@
-import React, {useMemo} from 'react';
-import {
-  StyleSheet,
-  Text,
-  FlatList,
-  ImageBackground,
-  TouchableOpacity,
-} from 'react-native';
+import React from 'react';
+import {StyleSheet, Text, FlatList, ImageBackground} from 'react-native';
 import {useQuery} from '@apollo/client';
+import {BackDrop, ItemCard} from '../Generic/ItemComponents';
 import {GET_SORCERIES} from '../../GraphQL/Sorcery';
 
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import type {HomeStackParams} from '../../types/Pages';
+import {ListItemType} from '../../types/Pages';
+
+import {TopTitle} from '../Generic/List';
 
 import {SorceriesQuery, SorceriesQueryVariables} from '../../types/graphql';
 import {Spinner} from '../Spinner';
@@ -22,10 +20,14 @@ export default function Sorcery({navigation}: Props): JSX.Element {
     SorceriesQuery,
     SorceriesQueryVariables
   >(GET_SORCERIES);
-  const {sorcery} = useMemo(() => {
-    return data ? data : {sorcery: undefined};
-  }, [data]);
 
+  const handleNavigation = (item: ListItemType): void => {
+    navigation.navigate('SorceryInfo', {
+      name: item!.name,
+      id: item!.id,
+      image: item!.image,
+    });
+  };
   if (loading) {
     return <Spinner />;
   }
@@ -33,32 +35,31 @@ export default function Sorcery({navigation}: Props): JSX.Element {
     return <Text>`Error! ${error.message}`</Text>;
   }
   return (
-    <FlatList
-      style={styles.container}
-      data={sorcery}
-      renderItem={({item}) => (
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('CreatureInfo', {
-              name: item?.name || '',
-              id: item?.id || '',
-              image: item?.id || '',
-            });
-          }}>
-          {item?.image && (
-            <ImageBackground
-              blurRadius={2}
-              style={styles.thumbnail}
-              source={{
-                uri: item.image,
-              }}>
-              <Text style={styles.textStyle}>{item.name}</Text>
-            </ImageBackground>
-          )}
-        </TouchableOpacity>
-      )}
-      keyExtractor={item => item?.id || ''}
-    />
+    <>
+      <BackDrop />
+      <FlatList
+        style={styles.container}
+        data={data?.sorcery}
+        ListHeaderComponent={
+          <ImageBackground
+            style={styles.titleImageBackground}
+            source={require('../../../assets/images/WeaponAlt.webp')}>
+            <TopTitle title="Items" />
+          </ImageBackground>
+        }
+        renderItem={({item}) => (
+          <>
+            {item!.image && (
+              <ItemCard
+                onNavigation={handleNavigation}
+                item={item as ListItemType}
+              />
+            )}
+          </>
+        )}
+        keyExtractor={item => item?.id || ''}
+      />
+    </>
   );
 }
 
@@ -78,5 +79,8 @@ const styles = StyleSheet.create({
     color: '#F9DF99',
     marginTop: 40,
     marginLeft: 10,
+  },
+  titleImageBackground: {
+    height: 200,
   },
 });

@@ -5,7 +5,6 @@ import {
   View,
   TextInput,
   StyleSheet,
-  Image,
   FlatList,
 } from 'react-native';
 import {useQuery} from '@apollo/client';

@@ -4,10 +4,8 @@ import {
   Text,
   View,
   ImageBackground,
-  TouchableOpacity,
   SectionList,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
 import {useQuery} from '@apollo/client';
 import {GET_BOSS} from '../../GraphQL/Bosses';
@@ -19,6 +17,10 @@ import type {HomeStackParams} from '../../types/Pages';
 import {Spinner} from '../Spinner';
 import {BossQuery, BossQueryVariables} from '../../types/graphql';
 import {sortData, Section, SectionItem} from '../../utils/sortdata';
+import {TopTitle} from '../Generic/List';
+
+import {ListItemType} from '../../types/pages';
+import {CreatureCard} from '../Generic/creatureComponents';
 
 type Props = NativeStackScreenProps<HomeStackParams, 'Bosses'>;
 
@@ -36,6 +38,14 @@ export default function Bosses({navigation}: Props): JSX.Element {
       : ([] as Array<Section>);
   }, [bossData]);
 
+  const handleNavigation = (item: ListItemType): void => {
+    navigation.navigate('ItemsInfo', {
+      name: item!.name,
+      id: item!.id,
+      image: item!.image,
+    });
+  };
+
   if (loading) {
     return <Spinner />;
   }
@@ -50,45 +60,13 @@ export default function Bosses({navigation}: Props): JSX.Element {
           <ImageBackground
             style={styles.imageBackground}
             source={require('../../../assets/images/Bosses.png')}>
-            <LinearGradient
-              colors={['transparent', '#050300']}
-              style={styles.linearGradient}>
-              <View style={styles.titleContainer}>
-                <View style={styles.titleLine} />
-                <Text style={styles.header}>Bosses </Text>
-                <View style={styles.titleLine} />
-              </View>
-            </LinearGradient>
+            <TopTitle title="Bosses " />
           </ImageBackground>
         }
         renderItem={({item}) => (
           <>
             {item?.image && (
-              <TouchableOpacity
-                style={styles.thumbnailContainer}
-                onPress={() => {
-                  navigation.navigate('BossInfo', {
-                    name: item?.name || '',
-                    id: item?.id || '',
-                    image: item?.image || '',
-                  });
-                }}>
-                <ImageBackground
-                  blurRadius={2}
-                  borderRadius={6}
-                  style={styles.thumbnail}
-                  source={{
-                    uri: item.image,
-                  }}>
-                  <LinearGradient
-                    end={{x: 0.0, y: 1.0}}
-                    start={{x: 0.5, y: 2.0}}
-                    colors={['transparent', '#050300']}
-                    style={styles.linearGradient}>
-                    <Text style={styles.textStyle}>{item.name}</Text>
-                  </LinearGradient>
-                </ImageBackground>
-              </TouchableOpacity>
+              <CreatureCard onNavigation={handleNavigation} item={item} />
             )}
           </>
         )}

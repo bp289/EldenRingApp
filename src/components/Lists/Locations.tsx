@@ -6,7 +6,6 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import {useQuery} from '@apollo/client';
 import {GET_LOCATIONS} from '../../GraphQL/Locations';
 import {allText} from '../../styles/Text';

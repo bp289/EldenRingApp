@@ -93,7 +93,7 @@ const text = StyleSheet.create({
   },
   linearGradient: {
     flex: 1,
-    height: 100,
+    height: 600,
   },
   dropDown: {
     fontFamily: 'Raleway',
@@ -141,7 +141,7 @@ const style = StyleSheet.create({
   main: {
     width: '95%',
     backgroundColor: '#182120',
-    margin: 10,
+    marginLeft: 10,
     borderBottomWidth: 5,
     borderBottomColor: '#59593E',
     borderRadius: 9,

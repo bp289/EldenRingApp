@@ -5,7 +5,6 @@ import {
   FlatList,
   ImageBackground,
   TouchableOpacity,
-  View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useQuery} from '@apollo/client';
@@ -17,6 +16,7 @@ import type {HomeStackParams} from '../../types/Pages';
 
 import {LocationsQuery, LocationsQueryVariables} from '../../types/graphql';
 import {Spinner} from '../Spinner';
+import {TopTitle} from '../Generic/List';
 
 type Props = NativeStackScreenProps<HomeStackParams, 'Locations'>;
 
@@ -43,47 +43,8 @@ export default function Locations({navigation}: Props): JSX.Element {
         <ImageBackground
           style={text.titleImageBackground}
           source={require('../../../assets/images/Locations.png')}>
-          <LinearGradient
-            colors={['transparent', '#050300']}
-            style={text.linearGradient}>
-            <View style={text.titleContainer}>
-              <View style={text.titleLine} />
-              <Text style={text.header}>Locations </Text>
-              <View style={text.titleLine} />
-            </View>
-          </LinearGradient>
+          <TopTitle title="Locations" />
         </ImageBackground>
-
-        //  <SelectDropdown
-        //         data={regions}
-        //         onSelect={selectedItem => {
-        //           setWeaponCategory(selectedItem);
-        //         }}
-        //         buttonStyle={locationMenu.main}
-        //         buttonTextStyle={text.dropDown}
-        //         defaultButtonText={'Axe'}
-        //         buttonTextAfterSelection={selectedItem => {
-        //           return selectedItem;
-        //         }}
-        //         renderDropdownIcon={isOpened => {
-        //           return (
-        //             <>
-        //               <Image
-        //                 style={
-        //                   isOpened
-        //                     ? locationMenu.chevronOpen
-        //                     : loaationMenu.chevronClosed
-        //                 }
-        //                 source={require('../../../assets/images/icons/chevron.png')}
-        //               />
-        //               <Text style={text.dropDown}>Weapon Type :</Text>
-        //             </>
-        //           );
-        //         }}
-        //         dropdownIconPosition={'left'}
-        //         rowStyle={LocationMenu.rowStyle}
-        //         rowTextStyle={text.dropDownRow}
-        //       />
       }
       renderItem={({item}) => (
         <TouchableOpacity

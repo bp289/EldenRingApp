@@ -1,16 +1,14 @@
-import React, {useMemo} from 'react';
-import {
-  StyleSheet,
-  Text,
-  FlatList,
-  ImageBackground,
-  TouchableOpacity,
-} from 'react-native';
+import React from 'react';
+import {StyleSheet, Text, FlatList, ImageBackground} from 'react-native';
 import {useQuery} from '@apollo/client';
+import {BackDrop, ItemCard} from '../Generic/ItemComponents';
+
 import {GET_ASHES_OF_WAR} from '../../GraphQL/AshesOfWar';
 
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import type {HomeStackParams} from '../../types/Pages';
+import {ListItemType} from '../../types/Pages';
+import {TopTitle} from '../Generic/List';
 
 import {Spinner} from '../Spinner';
 import {
@@ -26,9 +24,13 @@ export default function Incantations({navigation}: Props): JSX.Element {
     IncantationsQueryVariables
   >(GET_ASHES_OF_WAR);
 
-  const {incantation} = useMemo(() => {
-    return data ? data : {creature: undefined};
-  }, [data]);
+  const handleNavigation = (item: ListItemType): void => {
+    navigation.navigate('SorceryInfo', {
+      name: item!.name,
+      id: item!.id,
+      image: item!.image,
+    });
+  };
 
   if (loading) {
     return <Spinner />;
@@ -38,32 +40,32 @@ export default function Incantations({navigation}: Props): JSX.Element {
   }
 
   return (
-    <FlatList
-      style={styles.container}
-      data={incantation}
-      renderItem={({item}) => (
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('IncantationInfo', {
-              name: item?.name || '',
-              id: item?.id || '',
-              image: item?.id || '',
-            });
-          }}>
-          {item?.image && (
-            <ImageBackground
-              blurRadius={2}
-              style={styles.thumbnail}
-              source={{
-                uri: item.image,
-              }}>
-              <Text style={styles.textStyle}>{item.name}</Text>
-            </ImageBackground>
-          )}
-        </TouchableOpacity>
-      )}
-      keyExtractor={item => item?.id || ''}
-    />
+    <>
+      <BackDrop />
+
+      <FlatList
+        style={styles.container}
+        data={data?.incantation}
+        ListHeaderComponent={
+          <ImageBackground
+            style={styles.titleImageBackground}
+            source={require('../../../assets/images/WeaponAlt.webp')}>
+            <TopTitle title="Incantations" />
+          </ImageBackground>
+        }
+        renderItem={({item}) => (
+          <>
+            {item!.image && (
+              <ItemCard
+                onNavigation={handleNavigation}
+                item={item as ListItemType}
+              />
+            )}
+          </>
+        )}
+        keyExtractor={item => item?.id || ''}
+      />
+    </>
   );
 }
 
@@ -83,5 +85,8 @@ const styles = StyleSheet.create({
     color: '#F9DF99',
     marginTop: 40,
     marginLeft: 10,
+  },
+  titleImageBackground: {
+    height: 200,
   },
 });

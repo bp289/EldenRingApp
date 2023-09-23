@@ -44,7 +44,7 @@ export default function Sorcery({navigation}: Props): JSX.Element {
           <ImageBackground
             style={styles.titleImageBackground}
             source={require('../../../assets/images/WeaponAlt.webp')}>
-            <TopTitle title="Items" />
+            <TopTitle title="Sorcery" />
           </ImageBackground>
         }
         renderItem={({item}) => (

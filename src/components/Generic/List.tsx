@@ -1,16 +1,21 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 interface Props {
   title: string;
 }
 export function TopTitle({title}: Props): JSX.Element {
   return (
-    <View style={text.titleContainer}>
-      <View style={text.titleLine} />
-      <Text style={text.header}>{title} </Text>
-      <View style={text.titleLine} />
-    </View>
+    <LinearGradient
+      colors={['transparent', '#050300']}
+      style={text.linearGradient}>
+      <View style={text.titleContainer}>
+        <View style={text.titleLine} />
+        <Text style={text.header}>{title} </Text>
+        <View style={text.titleLine} />
+      </View>
+    </LinearGradient>
   );
 }
 
@@ -41,5 +46,9 @@ const text = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
+  },
+  linearGradient: {
+    flex: 1,
+    height: 100,
   },
 });

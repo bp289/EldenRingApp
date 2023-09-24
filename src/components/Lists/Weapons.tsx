@@ -93,6 +93,6 @@ const styles = StyleSheet.create({
     height: 100,
   },
   titleImageBackground: {
-    height: 200,
+    height: 300,
   },
 });

@@ -29,33 +29,34 @@ export function DropDown({
       colors={['transparent', '#050300']}
       style={text.linearGradient}>
       <TopTitle title={title} />
-
-      <SelectDropdown
-        data={categories}
-        onSelect={selectedItem => {
-          setCat(selectedItem);
-        }}
-        buttonStyle={style.main}
-        buttonTextStyle={text.dropDown}
-        defaultButtonText={defaultText}
-        buttonTextAfterSelection={selectedItem => {
-          return selectedItem;
-        }}
-        renderDropdownIcon={isOpened => {
-          return (
-            <>
-              <Image
-                style={isOpened ? style.chevronOpen : style.chevronClosed}
-                source={require('../../../assets/images/icons/chevron.png')}
-              />
-              <Text style={text.dropDown}>Weapon Type :</Text>
-            </>
-          );
-        }}
-        dropdownIconPosition={'left'}
-        rowStyle={style.rowStyle}
-        rowTextStyle={text.dropDownRow}
-      />
+      <View style={style.backGround}>
+        <SelectDropdown
+          data={categories}
+          onSelect={selectedItem => {
+            setCat(selectedItem);
+          }}
+          buttonStyle={style.main}
+          buttonTextStyle={text.dropDown}
+          defaultButtonText={defaultText}
+          buttonTextAfterSelection={selectedItem => {
+            return selectedItem;
+          }}
+          renderDropdownIcon={isOpened => {
+            return (
+              <>
+                <Image
+                  style={isOpened ? style.chevronOpen : style.chevronClosed}
+                  source={require('../../../assets/images/icons/chevron.png')}
+                />
+                <Text style={text.dropDown}>Weapon Type :</Text>
+              </>
+            );
+          }}
+          dropdownIconPosition={'left'}
+          rowStyle={style.rowStyle}
+          rowTextStyle={text.dropDownRow}
+        />
+      </View>
     </LinearGradient>
   );
 }
@@ -113,12 +114,12 @@ const text = StyleSheet.create({
 
 const style = StyleSheet.create({
   backGround: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'black',
   },
   thumbnail: {
     width: 'auto',
     borderRadius: 5,
-    height: 130,
+    height: 140,
     margin: 10,
     borderBottomColor: '#0E3F39',
     borderBottomWidth: 7,

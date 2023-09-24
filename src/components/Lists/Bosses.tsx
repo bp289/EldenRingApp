@@ -39,7 +39,7 @@ export default function Bosses({navigation}: Props): JSX.Element {
   }, [bossData]);
 
   const handleNavigation = (item: ListItemType): void => {
-    navigation.navigate('ItemsInfo', {
+    navigation.navigate('BossInfo', {
       name: item!.name,
       id: item!.id,
       image: item!.image,

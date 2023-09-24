@@ -18,7 +18,7 @@ import {allText} from '../styles/Text';
 
 import {TabParams} from '../../App';
 import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
-import {DropDown} from '../components/Generic/ItemComponents';
+import {DropDown} from '../components/Generic/searchComponents';
 
 type Props = BottomTabScreenProps<TabParams, 'Search'>;
 
@@ -57,7 +57,6 @@ export default function Search({navigation}: Props): JSX.Element {
       category as keyof SearchDataQuery
     ] as SearchType[];
 
-    console.log(dataToSearch);
     setResults(
       dataToSearch?.filter(item => {
         if (item.name.toLowerCase().includes(search.toLowerCase())) {
@@ -82,7 +81,6 @@ export default function Search({navigation}: Props): JSX.Element {
             <>
               <View style={styles.headerMargin} />
               <DropDown
-                title="Search"
                 defaultText="Bosses"
                 setCat={setSearchCategory}
                 categories={categories}

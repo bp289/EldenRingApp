@@ -1,3 +1,5 @@
+import {Page} from '../types/pages';
+
 export interface Section {
   title: string;
   data: SectionItem[];
@@ -27,3 +29,13 @@ export function sortData(input: SectionItem[]): Array<Section> {
 
   return result;
 }
+
+export const isInArray = (myArray: Page[], objectToFind: Page): boolean => {
+  return myArray.some(obj => {
+    return (
+      obj.id === objectToFind.id &&
+      obj.name === objectToFind.name &&
+      obj.__typename === objectToFind.__typename
+    );
+  });
+};

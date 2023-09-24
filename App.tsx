@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {MMKVProvider} from './src/contexts/Storage';
+import {StorageProvider} from './src/contexts/Storage';
 
 import {MMKV} from 'react-native-mmkv';
 
@@ -30,7 +30,7 @@ const Tab = createBottomTabNavigator<TabParams>();
 
 function App(): JSX.Element {
   return (
-    <MMKVProvider>
+    <StorageProvider>
       <ApolloProvider client={client}>
         <NavigationContainer>
           <Tab.Navigator
@@ -70,7 +70,7 @@ function App(): JSX.Element {
           </Tab.Navigator>
         </NavigationContainer>
       </ApolloProvider>
-    </MMKVProvider>
+    </StorageProvider>
   );
 }
 

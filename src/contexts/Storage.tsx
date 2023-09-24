@@ -1,18 +1,29 @@
-import React, {createContext} from 'react';
+import React, {createContext, useContext, useState} from 'react';
 import {MMKV} from 'react-native-mmkv';
 
-interface MMKVContextProps {
-  storage: MMKV;
+const MMKVContext = createContext();
+const MMKVUpdate = createContext();
+
+export function useBookMarks() {
+  return [useContext(MMKVContext), useContext(MMKVUpdate)];
 }
 
-const MMKVContext = createContext<MMKVContextProps | undefined>(undefined);
-
-export const MMKVProvider = ({children}: React.PropsWithChildren<{}>) => {
+export const StorageProvider = ({children}: React.PropsWithChildren<{}>) => {
   const storage = new MMKV();
+  const bookMarkJson = storage!.getString('bookMarks')!;
+  const [bookMarks, setBookMarks] = useState(JSON.parse(bookMarkJson));
 
+  const updateStorage = newBookMarks => {
+    setBookMarks(newBookMarks);
+    storage.set('bookMarks', JSON.stringify(newBookMarks));
+  };
   return (
-    <MMKVContext.Provider value={{storage}}>{children}</MMKVContext.Provider>
+    <MMKVContext.Provider value={bookMarks}>
+      <MMKVUpdate.Provider value={updateStorage}>
+        {children}
+      </MMKVUpdate.Provider>
+    </MMKVContext.Provider>
   );
 };
 
-export default MMKVContext;
+export default StorageProvider;

@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, {useMemo, useContext} from 'react';
 import {
   ScrollView,
   Text,
@@ -6,7 +6,7 @@ import {
   View,
   ImageBackground,
   TouchableOpacity,
-  Pressable,
+  Alert,
 } from 'react-native';
 
 import {useQuery} from '@apollo/client';
@@ -22,15 +22,18 @@ import {GET_BOSS_DETAILS} from '../../GraphQL/Bosses';
 import {creaturesInfo} from '../../styles/creatureStyle';
 
 import {infoText} from '../../styles/Text';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {BossDetailsQuery, BossDetailsQueryVariables} from '../../types/graphql';
-import MMKVContext from '../../contexts/Storage';
+import {useBookMarks} from '../../contexts/Storage';
+import {isInArray} from '../../utils/sortdata';
 
+import {ListItemType} from '../../types/pages';
 type Props = NativeStackScreenProps<HomeStackParams, 'BossInfo'>;
 
 export default function BossInfo({navigation, route}: Props): JSX.Element {
   const {id, name, image} = route.params;
-  const {storage} = useContext(MMKVContext);
+  const [bookMarks, setBookMarks] = useBookMarks();
 
   const {loading, error, data} = useQuery<
     BossDetailsQuery,
@@ -48,12 +51,37 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
     return <Text>`Error! ${error.message}`</Text>;
   }
 
+  function handleStorage(page: ListItemType) {
+    const prev = bookMarks;
+    if (!prev) {
+      const pageArr = [page];
+      setBookMarks(pageArr);
+      Alert.alert('Succesfully set bookmarks');
+    } else {
+      const prevArr = [...prev];
+
+      if (isInArray(prevArr, page)) {
+        Alert.alert('Already Exists In bookmarks');
+      } else {
+        prevArr.push(page);
+        setBookMarks(prevArr);
+        Alert.alert('Succesfully added bookmark!');
+      }
+    }
+  }
+
   return (
     <>
-      <Pressable>
-        <Text>add bookmark</Text>
-      </Pressable>
       <ScrollView style={styles.container}>
+        <TouchableOpacity
+          style={styles.container}
+          onPress={() => {
+            handleStorage({id, name, image, __typename: 'Boss'});
+          }}>
+          <Text>
+            <Ionicons name="add-circle-outline" size={30} color="#F2D16C" />
+          </Text>
+        </TouchableOpacity>
         <ImageBackground
           style={styles.thumbnail}
           source={{

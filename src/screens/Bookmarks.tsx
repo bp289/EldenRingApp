@@ -1,7 +1,7 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React from 'react';
 import {Text, View, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
 
-import MMKVContext, {useBookMarks} from '../contexts/Storage';
+import {useBookMarks} from '../contexts/Storage';
 import {TopTitle} from '../components/Generic/List';
 
 import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';

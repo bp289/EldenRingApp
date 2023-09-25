@@ -2,6 +2,17 @@ export const creaturesInfo: any = {
   container: {
     backgroundColor: '#050300',
   },
+  bookmark: {
+    position: 'absolute',
+    zIndex: 1,
+    bottom: 0,
+    top: 0,
+    right: 0,
+    backgroundColor: '#59593E',
+    width: 35,
+    height: 35,
+    borderRadius: 10,
+  },
   thumbnail: {
     height: 400,
     flex: 1,

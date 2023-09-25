@@ -21,7 +21,7 @@ const client = new ApolloClient({
 });
 
 export type TabParams = {
-  Home: undefined;
+  Home: {screen: string; params: {id: string; name: string; image: string}};
   Search: undefined;
   BookMarks: undefined;
 };

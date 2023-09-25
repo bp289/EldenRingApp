@@ -1,4 +1,4 @@
-import React, {useMemo, useContext} from 'react';
+import React, {useMemo} from 'react';
 import {
   ScrollView,
   Text,
@@ -72,16 +72,16 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
 
   return (
     <>
+      <TouchableOpacity
+        style={styles.bookmark}
+        onPress={() => {
+          handleStorage({id, name, image, __typename: 'Boss'});
+        }}>
+        <Text>
+          <Ionicons name="add-circle-outline" size={35} color="#F2D16C" />
+        </Text>
+      </TouchableOpacity>
       <ScrollView style={styles.container}>
-        <TouchableOpacity
-          style={styles.container}
-          onPress={() => {
-            handleStorage({id, name, image, __typename: 'Boss'});
-          }}>
-          <Text>
-            <Ionicons name="add-circle-outline" size={30} color="#F2D16C" />
-          </Text>
-        </TouchableOpacity>
         <ImageBackground
           style={styles.thumbnail}
           source={{

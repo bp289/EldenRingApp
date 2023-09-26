@@ -7,9 +7,9 @@ import type {HomeStackParams} from '../../types/pages';
 import {GET_ITEM_DETAILS} from '../../GraphQL/Items';
 import {ItemDetailsQuery, ItemDetailsQueryVariables} from '../../types/graphql';
 
-type Props = NativeStackScreenProps<HomeStackParams, 'ItemInfo'>;
+type Props = NativeStackScreenProps<HomeStackParams, 'ItemsInfo'>;
 
-export default function ItemInfo({navigation, route}: Props): JSX.Element {
+export default function ItemInfo({route}: Props): JSX.Element {
   const {id, name, image} = route.params;
 
   const {loading, error, data} = useQuery<

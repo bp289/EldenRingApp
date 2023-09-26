@@ -19,7 +19,7 @@ import BossInfo from '../components/Details/BossInfo';
 import WeaponInfo from '../components/Details/WeaponInfo';
 import CreaturesInfo from '../components/Details/CreaturesInfo';
 import LocationInfo from '../components/Details/LocationInfo';
-import ItemInfo from '../components/Details/ItemsInfo';
+import ItemsInfo from '../components/Details/ItemsInfo';
 import ArmorInfo from '../components/Details/ArmorInfo';
 
 //Pages
@@ -43,6 +43,10 @@ const images: image = {
   Weapons: require('../../assets/images/Weapons.png'),
   Locations: require('../../assets/images/Locations.png'),
   Creatures: require('../../assets/images/Creatures.jpeg'),
+  Armors: require('../../assets/images/Armor.jpg'),
+  Items: require('../../assets/images/Items.jpg'),
+  Shields: require('../../assets/images/Shield.jpg'),
+  AshesOfWar: require('../../assets/images/ashesOfWar.jpg'),
 };
 const categories = [
   'Bosses',
@@ -223,6 +227,24 @@ export default function Home(): JSX.Element {
           headerTitleStyle,
         }}
       />
+      <HomeStack.Screen
+        name="ItemsInfo"
+        component={ItemsInfo}
+        options={{
+          headerStyle,
+          headerTintColor,
+          headerTitleStyle,
+        }}
+      />
+      <HomeStack.Screen
+        name="ArmorInfo"
+        component={ArmorInfo}
+        options={{
+          headerStyle,
+          headerTintColor,
+          headerTitleStyle,
+        }}
+      />
     </HomeStack.Navigator>
   );
 }
@@ -261,8 +283,8 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     color: '#F9DF99',
-    fontFamily: 'Cormorant Garamond',
-    fontSize: 55,
+    fontFamily: 'Raleway',
+    fontSize: 50,
     fontWeight: 'bold',
     marginTop: 70,
   },

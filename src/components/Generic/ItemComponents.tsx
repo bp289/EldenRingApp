@@ -6,6 +6,9 @@ import {ListItemType} from '../../types/pages';
 import LinearGradient from 'react-native-linear-gradient';
 import SelectDropdown from 'react-native-select-dropdown';
 import {TopTitle} from './List';
+
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 interface DropDownProps {
   title: string;
   categories: string[];
@@ -18,6 +21,10 @@ interface ItemCardProps {
   onNavigation: (item: ListItemType) => void;
 }
 
+interface BookmarkProps {
+  onSetStorage: (page: ListItemType) => void;
+  page: ListItemType;
+}
 export function DropDown({
   title,
   categories,
@@ -84,6 +91,20 @@ export function BackDrop(): JSX.Element {
   return <View style={style.backGround} />;
 }
 
+export function AddBookMark({onSetStorage, page}: BookmarkProps): JSX.Element {
+  return (
+    <TouchableOpacity
+      style={style.bookmark}
+      onPress={() => {
+        onSetStorage(page);
+      }}>
+      <Text>
+        <Ionicons name="add-circle-outline" size={35} color="#F2D16C" />
+      </Text>
+    </TouchableOpacity>
+  );
+}
+
 const text = StyleSheet.create({
   text: {
     fontFamily: 'Raleway',
@@ -115,6 +136,17 @@ const text = StyleSheet.create({
 const style = StyleSheet.create({
   backGround: {
     backgroundColor: 'black',
+  },
+  bookmark: {
+    position: 'absolute',
+    zIndex: 1,
+    bottom: 0,
+    top: 0,
+    right: 0,
+    backgroundColor: '#59593E',
+    width: 35,
+    height: 35,
+    borderRadius: 10,
   },
   thumbnail: {
     width: 'auto',

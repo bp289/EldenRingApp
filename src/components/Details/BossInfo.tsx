@@ -29,6 +29,7 @@ import {useBookMarks} from '../../contexts/Storage';
 import {isInArray} from '../../utils/sortdata';
 
 import {ListItemType} from '../../types/pages';
+import {AddBookMark} from '../Generic/ItemComponents';
 type Props = NativeStackScreenProps<HomeStackParams, 'BossInfo'>;
 
 export default function BossInfo({navigation, route}: Props): JSX.Element {
@@ -72,6 +73,10 @@ export default function BossInfo({navigation, route}: Props): JSX.Element {
 
   return (
     <>
+      <AddBookMark
+        onSetStorage={handleStorage}
+        page={{id, name, image, __typename: 'Boss'}}
+      />
       <TouchableOpacity
         style={styles.bookmark}
         onPress={() => {

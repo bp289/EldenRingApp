@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, Text, Image, StyleSheet, View} from 'react-native';
+import {ScrollView, Text, Image, StyleSheet, View, Alert} from 'react-native';
 import {Spinner} from '../Spinner';
 import {useQuery} from '@apollo/client';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
@@ -11,6 +11,8 @@ import {
 } from '../../types/graphql';
 
 import LinearGradient from 'react-native-linear-gradient';
+import {isInArray} from '../../utils/sortdata';
+import {useBookMarks} from '../../contexts/Storage';
 
 import {
   Description,
@@ -24,10 +26,16 @@ import {
   FillRowAttributeStat,
   RowItemFill,
 } from '../Generic/Info';
+
+import {ListItemType} from '../../types/pages';
+
+import {AddBookMark} from '../Generic/ItemComponents';
+
 type Props = NativeStackScreenProps<HomeStackParams, 'WeaponInfo'>;
 
 export default function BossInfo({route}: Props): JSX.Element {
   const {id, name, image} = route.params;
+  const [bookMarks, setBookMarks] = useBookMarks();
 
   const {loading, error, data} = useQuery<
     WeaponDetailsQuery,
@@ -40,49 +48,79 @@ export default function BossInfo({route}: Props): JSX.Element {
   if (error) {
     return <Text>`Error! ${error.message}`</Text>;
   }
+  function handleStorage(page: ListItemType) {
+    const prev = bookMarks;
+    if (!prev) {
+      const pageArr = [page];
+      setBookMarks(pageArr);
+      Alert.alert('Succesfully set bookmarks');
+    } else {
+      const prevArr = [...prev];
+
+      if (isInArray(prevArr, page)) {
+        Alert.alert('Already Exists In bookmarks');
+      } else {
+        prevArr.push(page);
+        setBookMarks(prevArr);
+        Alert.alert('Succesfully added bookmark!');
+      }
+    }
+  }
 
   return (
-    <ScrollView style={styles.container}>
-      <LinearGradient colors={['black', '#182120']} style={styles.card}>
-        <Text style={text.header}>{name}</Text>
-        <View style={styles.category}>
-          <Text style={text.subHeading}>({data?.getWeapon?.category})</Text>
-        </View>
-      </LinearGradient>
-      <Image
-        style={styles.thumbnail}
-        source={{
-          uri: image,
-        }}
+    <>
+      <AddBookMark
+        onSetStorage={handleStorage}
+        page={{id, name, image, __typename: 'Weapon'}}
       />
-      <Divider />
-      <Description textData={data?.getWeapon?.description!} />
-      <SubHeading textData="Stats" />
-
-      <Stats>
-        <StatRow>
-          <AttributeStat title="Attack" statData={data?.getWeapon!.attack!} />
-          <AttributeStat title="Defense" statData={data?.getWeapon!.defence!} />
-        </StatRow>
-        <StatRow>
-          <ScalingStat
-            title="Scaling"
-            statData={data?.getWeapon!.scalesWith!}
-          />
-          <RowItem title="Category" description={data?.getWeapon!.category!} />
-        </StatRow>
-      </Stats>
-
-      <Divider />
-
-      <Stats>
-        <FillRowAttributeStat
-          title="Requirements"
-          statData={data?.getWeapon!.requiredAttributes!}
+      <ScrollView style={styles.container}>
+        <LinearGradient colors={['black', '#182120']} style={styles.card}>
+          <Text style={text.header}>{name}</Text>
+          <View style={styles.category}>
+            <Text style={text.subHeading}>({data?.getWeapon?.category})</Text>
+          </View>
+        </LinearGradient>
+        <Image
+          style={styles.thumbnail}
+          source={{
+            uri: image,
+          }}
         />
-        <RowItemFill title="Weight" description={data?.getWeapon!.weight!} />
-      </Stats>
-    </ScrollView>
+        <Divider />
+        <Description textData={data?.getWeapon?.description!} />
+        <SubHeading textData="Stats" />
+
+        <Stats>
+          <StatRow>
+            <AttributeStat title="Attack" statData={data?.getWeapon!.attack!} />
+            <AttributeStat
+              title="Defense"
+              statData={data?.getWeapon!.defence!}
+            />
+          </StatRow>
+          <StatRow>
+            <ScalingStat
+              title="Scaling"
+              statData={data?.getWeapon!.scalesWith!}
+            />
+            <RowItem
+              title="Category"
+              description={data?.getWeapon!.category!}
+            />
+          </StatRow>
+        </Stats>
+
+        <Divider />
+
+        <Stats>
+          <FillRowAttributeStat
+            title="Requirements"
+            statData={data?.getWeapon!.requiredAttributes!}
+          />
+          <RowItemFill title="Weight" description={data?.getWeapon!.weight!} />
+        </Stats>
+      </ScrollView>
+    </>
   );
 }
 

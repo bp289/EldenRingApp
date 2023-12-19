@@ -1,6 +1,6 @@
 This Project uses the fanmade Elden ring API: https://eldenring.fanapis.com/ 
 
-This project uses react native and [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+This Project uses react native and [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Setting up for development 
 

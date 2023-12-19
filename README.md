@@ -54,8 +54,16 @@ This is one way to run your app — you can also run it directly from within And
 
 You've successfully set up the Elden Ring app for development. :partying_face:
 
+
 # Help, it doesn't work!! 😢
 
 Please refer to the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) to make sure everything is set up correctly.
 If that's been exhausted there's the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+
+### Running tests:
+
+```bash
+maestro test .maestro
+```
+
 
